@@ -6,11 +6,6 @@ on:
         description: "Environment to deploy to"
         type: environment
         required: true
-        default: "dev"
-      tag:
-        description: "Tag to deploy"
-        type: string
-        required: false
   push:
     branches:
       - "*_dev"
@@ -25,7 +20,7 @@ jobs:
       contents: "read"
       id-token: "write"
     runs-on: ubuntu-latest
-    environment: ${{ (endsWith(github.ref, '_dev') && 'dev') || (endsWith(github.ref, '_qa') && 'qa') || '' }}
+    environment: ${{ (endsWith(github.ref, '_dev') && 'dev') || (endsWith(github.ref, '_qa') && 'qa') || inputs.environment || '' }}
 
     steps:
       - uses: "actions/checkout@v4"
@@ -48,10 +43,6 @@ jobs:
         env:
           VPC: ${{ secrets.VPC }}
           SUBNET: ${{ secrets.SUBNET }}
-
-      - id: "set_ingress"
-        name: "Set Ingress"
-        run: "gcloud app services update default --ingress=internal-and-cloud-load-balancing || true"
 
       - id: deploy
         name: "Deploy App"
