@@ -41,6 +41,6 @@ jobs:
           SUBNET: ${{ secrets.SUBNET }}
 
       - id: deploy
-        name: "Deploy App"
+        name: "Deploy App - ${{ github.event.inputs.environment }}"
         run: gcloud app deploy app.yaml --project ${{ secrets.PROJECT_ID }} --promote --verbosity debug --service-account=${{ secrets.APP_SERVICE_ACCOUNT }}
 
