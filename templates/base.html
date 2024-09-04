@@ -8,8 +8,6 @@
       content="The  TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene variants in human cancers"
     />
     <title>{% block title %}{% endblock %}</title>
-
-    {% if not config["TESTING"] %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -23,8 +21,6 @@
       gtag("js", new Date());
       gtag("config", "G-0EGD5HKC0S");
     </script>
-    {% endif %}
-
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='js/libs/jquery-3.6.0.min.js') }}"
