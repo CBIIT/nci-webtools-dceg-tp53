@@ -1,0 +1,46 @@
+﻿name: Deploy (CBIIT)
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        type: environment
+        required: true
+
+env:
+  TZ: America/New_York
+
+jobs:
+  Deploy:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    runs-on: ubuntu-latest
+    environment: ${{ (endsWith(github.ref, '_dev') && 'dev') || (endsWith(github.ref, '_qa') && 'qa') || inputs.environment || '' }}
+
+    steps:
+      - uses: "actions/checkout@v4"
+
+      # Set up Google Cloud SDK
+      - name: "Set up Google Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v2"
+
+      - id: "auth"
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v2"
+        with:
+          project_id: ${{ secrets.PROJECT_ID }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - id: "generate_app_yaml"
+        name: "Generate app.yaml"
+        run: envsubst < app.template.yaml > app.yaml
+        env:
+          VPC: ${{ secrets.VPC }}
+          SUBNET: ${{ secrets.SUBNET }}
+
+      - id: deploy
+        name: "Deploy App - ${{ github.event.inputs.environment }}"
+        run: gcloud app deploy app.yaml --project ${{ secrets.PROJECT_ID }} --promote --verbosity debug --service-account=${{ secrets.APP_SERVICE_ACCOUNT }}
+
