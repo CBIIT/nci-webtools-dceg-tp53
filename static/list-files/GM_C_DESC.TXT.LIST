@@ -1,3 +1,4 @@
+c.(?_-1)_(*1_?)del
 c.*267G>A
 c.1-10782G>T
 c.1-10788G>C
@@ -28,6 +29,7 @@ c.107C>T
 c.1093C>T
 c.1096T>G
 c.1101-2A>G
+c.1123C>T
 c.1129del
 c.112C>T
 c.1136G>A
@@ -50,9 +52,11 @@ c.210_211insN
 c.213_214insN
 c.214del
 c.216_217insN
+c.242del
 c.245C>T
 c.261_270del
 c.266_269del
+c.267delC
 c.272G>A
 c.273_274insG
 c.277_278del
@@ -64,6 +68,7 @@ c.293del
 c.294_297del
 c.298C>T
 c.309C>A
+c.309C>G
 c.310C>T
 c.313G>T
 c.314G>T
@@ -73,8 +78,10 @@ c.31G>C
 c.320_321insN
 c.321C>A
 c.322G>A
+c.323_329dup
 c.326T>C
 c.326del
+c.328_329delinsT
 c.328_329insNNNNNNN
 c.329G>A
 c.329G>C
@@ -126,6 +133,7 @@ c.398T>G
 c.401T>A
 c.402T>G
 c.406C>T
+c.406_424delinsACAA
 c.412G>C
 c.412G>T
 c.413C>T
@@ -163,6 +171,7 @@ c.470T>A
 c.472C>G
 c.472C>T
 c.473G>A
+c.473G>C
 c.473G>T
 c.475_482del
 c.476C>A
@@ -176,6 +185,7 @@ c.489C>G
 c.491_494del
 c.493C>T
 c.499C>A
+c.499C>T
 c.503A>G
 c.503A>T
 c.509C>T
@@ -300,12 +310,14 @@ c.706_708del
 c.707A>G
 c.708C>A
 c.709A>G
+c.710T>A
 c.711G>A
 c.712T>A
 c.712T>G
 c.713G>A
 c.713G>C
 c.716del
+c.717C>G
 c.717_718del
 c.718A>G
 c.721T>A
@@ -316,6 +328,7 @@ c.723del
 c.724T>C
 c.725G>A
 c.725G>T
+c.728T>C
 c.72del
 c.730G>A
 c.730del
@@ -339,6 +352,7 @@ c.746G>C
 c.748del
 c.749C>T
 c.75-10_81del
+c.75-18_78dup
 c.75-32C>A
 c.751A>C
 c.752T>C
@@ -389,6 +403,7 @@ c.824G>T
 c.825T>A
 c.825_832delinsNNNNN
 c.826_840del
+c.827C>A
 c.830G>A
 c.832C>G
 c.832C>T
@@ -411,6 +426,7 @@ c.845G>C
 c.846del
 c.847C>T
 c.848G>A
+c.848G>C
 c.848_849insGGCG
 c.850A>T
 c.853G>A
@@ -430,6 +446,7 @@ c.879_880insN
 c.880G>T
 c.892G>A
 c.892G>T
+c.892delinsTTT
 c.898_899insNNNN
 c.902_903insC
 c.904G>A
@@ -468,6 +485,7 @@ c.993+307C>G
 c.993+309C>T
 c.993+851_1100+280del
 c.993G>A
+c.994-1G>A
 c.994-1G>C
 c.994-1G>T
 c.994A>T
@@ -482,6 +500,7 @@ c.?(451C>G)
 c.?(652del)
 c.?(del exon1)
 c.?(del exon1-10)
+c.?(del exon1-9)
 c.?(del exon10-11)
 c.?(del exon2-10)
 c.?(del exon2-4)

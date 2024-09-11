@@ -1,5 +1,5 @@
 ###
-# Copyright 2021, ISB
+# Copyright 2024, ISB
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 import re
 from google.api_core.exceptions import BadRequest
 
-bq_proj_dataset = "{projectId}.{dataset}".format(projectId='nih-nci-cbiit-tp53-dev', dataset='prod')
+bq_proj_dataset = "{projectId}.{dataset}".format(projectId='nih-nci-cbiit-tp53-dev', dataset='P53_data')
 
 
-def set_project_dataset(proj_id="nih-nci-cbiit-tp53-dev", d_set="prod"):
+def set_project_dataset(proj_id="nih-nci-cbiit-tp53-dev", d_set="P53_data"):
     global bq_proj_dataset
     bq_proj_dataset = "{projectId}.{dataset}".format(projectId=proj_id, dataset=d_set)
 

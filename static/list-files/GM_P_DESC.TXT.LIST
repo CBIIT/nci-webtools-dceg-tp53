@@ -7,6 +7,7 @@ p.A159D
 p.A161T
 p.A189D
 p.A189V
+p.A276D
 p.A307fs
 p.A347D
 p.C124*
@@ -163,7 +164,9 @@ p.L344P
 p.M133R
 p.M133T
 p.M237I
+p.M237K
 p.M237V
+p.M243T
 p.M246L
 p.M246T
 p.M246V
@@ -173,6 +176,7 @@ p.N131del
 p.N210Y
 p.N235D
 p.N235S
+p.N239K
 p.N239fs
 p.N310fs
 p.P151A
@@ -210,11 +214,13 @@ p.Q104*
 p.Q136*
 p.Q144L
 p.Q165*
+p.Q167*
 p.Q167K
 p.Q317H
 p.Q317fs
 p.Q331*
 p.Q331Q
+p.Q375*
 p.Q38*
 p.Q52*
 p.R110H
@@ -227,6 +233,7 @@ p.R158C
 p.R158G
 p.R158H
 p.R158L
+p.R158P
 p.R174G
 p.R174fs
 p.R175C
@@ -269,6 +276,7 @@ p.R282Q
 p.R282W
 p.R283C
 p.R283H
+p.R283P
 p.R283fs
 p.R290C
 p.R290H
