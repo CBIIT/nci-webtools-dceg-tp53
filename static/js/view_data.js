@@ -89,7 +89,7 @@ $(document).ready(function () {
     var selectAllRows = function (bool) {
         var selection = '';
         if (bool) {
-            table.rows( {search:'applied'} ).select();
+            table.rows( {page: "current", search:'applied'} ).select();
             selection = 'tr.selected';
         }
         else {
