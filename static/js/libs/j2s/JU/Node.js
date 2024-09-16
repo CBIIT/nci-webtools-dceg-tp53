@@ -1,4 +1,3 @@
-Clazz.declarePackage ("JU");
-Clazz.load (["JU.SimpleNode"], "JU.Node", null, function () {
-Clazz.declareInterface (JU, "Node", JU.SimpleNode);
-});
+Clazz.declarePackage("JU");
+Clazz.declareInterface(JU, "Node", JU.SimpleNode);
+;//5.0.1-v4 Fri Sep 06 21:51:44 CDT 2024

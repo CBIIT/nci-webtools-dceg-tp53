@@ -1,4 +1,3 @@
-Clazz.declarePackage ("JSV.api");
-Clazz.load (["JSV.api.JSVAppletInterface", "$.ScriptInterface"], "JSV.api.JSVAppInterface", null, function () {
-Clazz.declareInterface (JSV.api, "JSVAppInterface", [JSV.api.JSVAppletInterface, JSV.api.ScriptInterface]);
-});
+Clazz.declarePackage("JSV.api");
+Clazz.declareInterface(JSV.api, "JSVAppInterface", JSV.api.JSVAppletInterface);
+;//5.0.1-v4 Fri Sep 06 21:51:44 CDT 2024

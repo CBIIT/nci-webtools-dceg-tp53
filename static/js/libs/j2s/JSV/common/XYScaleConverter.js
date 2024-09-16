@@ -1,2 +1,3 @@
-Clazz.declarePackage ("JSV.common");
-Clazz.declareInterface (JSV.common, "XYScaleConverter");
+Clazz.declarePackage("JSV.common");
+Clazz.declareInterface(JSV.common, "XYScaleConverter");
+;//5.0.1-v4 Fri Sep 06 21:51:44 CDT 2024

@@ -1,12 +1,13 @@
-Clazz.declarePackage ("JU");
-Clazz.load (["JU.T3i"], "JU.P3i", null, function () {
-c$ = Clazz.declareType (JU, "P3i", JU.T3i);
-c$.new3 = Clazz.defineMethod (c$, "new3", 
-function (x, y, z) {
-var pt =  new JU.P3i ();
+Clazz.declarePackage("JU");
+Clazz.load(["JU.T3i"], "JU.P3i", null, function(){
+var c$ = Clazz.declareType(JU, "P3i", JU.T3i);
+c$.new3 = Clazz.defineMethod(c$, "new3", 
+function(x, y, z){
+var pt =  new JU.P3i();
 pt.x = x;
 pt.y = y;
 pt.z = z;
 return pt;
 }, "~N,~N,~N");
 });
+;//5.0.1-v4 Fri Sep 06 21:51:44 CDT 2024
