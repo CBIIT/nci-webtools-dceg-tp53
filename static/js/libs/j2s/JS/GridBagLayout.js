@@ -1,4 +1,5 @@
-Clazz.declarePackage ("JS");
-Clazz.load (["JS.LayoutManager"], "JS.GridBagLayout", null, function () {
-c$ = Clazz.declareType (JS, "GridBagLayout", JS.LayoutManager);
+Clazz.declarePackage("JS");
+Clazz.load(["JS.LayoutManager"], "JS.GridBagLayout", null, function(){
+var c$ = Clazz.declareType(JS, "GridBagLayout", JS.LayoutManager);
 });
+;//5.0.1-v4 Fri Sep 06 21:51:44 CDT 2024

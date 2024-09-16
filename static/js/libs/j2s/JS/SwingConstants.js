@@ -1,6 +1,5 @@
-Clazz.declarePackage ("JS");
-c$ = Clazz.declareType (JS, "SwingConstants");
-Clazz.defineStatics (c$,
-"LEFT", 2,
-"CENTER", 0,
-"RIGHT", 4);
+Clazz.declarePackage("JS");
+(function(){
+var c$ = Clazz.declareType(JS, "SwingConstants", null);
+})();
+;//5.0.1-v4 Fri Sep 06 21:51:44 CDT 2024
