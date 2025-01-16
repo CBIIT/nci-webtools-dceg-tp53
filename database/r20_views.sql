@@ -702,6 +702,8 @@ ORDER BY
   Count DESC;
 DROP VIEW IF EXISTS
   prod.GermlineView_Carriers;
+CREATE VIEW 
+  prod.GermlineView_Carriers AS
 SELECT
   *
 FROM
