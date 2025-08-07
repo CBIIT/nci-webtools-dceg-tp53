@@ -311,6 +311,10 @@ a.hover-arrow-link:hover::after{
     color: white;
     background-color: #404DB5;
 }
+.page-banner-temp {
+    color: white;
+    background: #373D85;
+}
 
 .three_d_viwer {
     width: 800px;
