@@ -1,245 +1,160 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="h-100">
-  <head>
-    {% block head %}
-    <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="The  TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene variants in human cancers"
-    />
-    <title>{% block title %}{% endblock %}</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-0EGD5HKC0S"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-0EGD5HKC0S");
-    </script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/libs/jquery-3.6.0.min.js') }}"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/libs/popper.min.js') }}"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/libs/datatables.min.js') }}"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/base.js') }}"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/base.css') }}"
-    />
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='favicon.ico') }}"
-      type="image/vnd.microsoft.icon"
-    />
-    {% endblock %}
-  </head>
 
-  <body tabindex="0" class="d-flex flex-column h-100 bg-light">
-    <header>
-      <nav
-        class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-purple py-4"
-      >
-        <div class="container">
-          <button
-            class="navbar-toggler collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<head>
+  {% block head %}
+  <meta charset="utf-8" />
+  <meta name="description"
+    content="The  TP53 Database: knowledgebase and statistical tools for the analysis of TP53 gene variants in human cancers" />
+  <title>{% block title %}{% endblock %}</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EGD5HKC0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-0EGD5HKC0S");
+  </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-3.6.0.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/libs/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/libs/datatables.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/vnd.microsoft.icon" />
+  {% endblock %}
+</head>
 
-          <div class="navbar-collapse collapse" id="navbarCollapse">
-            <ul class="navbar-nav justify-content-evenly">
-              <li class="nav-item mx-xl-1 mx-xxl-2">
-                <a class="nav-link" id="home_menu" href="/"
-                  >The <em>TP53</em> Database</a
-                >
-              </li>
-              <li class="nav-item mx-xl-2 mx-xxl-3">
-                <a class="nav-link" id="about" href="/about">About</a>
-              </li>
-              <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-              <!--<a class="nav-link" id="tp53data" href="search_tp53data">Data-->
-              <!--Explorer</a>-->
-              <!--</li>-->
-              <li class="nav-item mx-xl-2 mx-xxl-3">
-                <a class="nav-link" id="help" href="/help">User Manual</a>
-              </li>
-              <li class="nav-item mx-xl-2 mx-xxl-3">
-                <a class="nav-link" id="resources" href="/resources"
-                  >Other Resources</a
-                >
-              </li>
-              <li class="nav-item mx-xl-2 mx-xxl-3">
-                <a class="nav-link" id="events" href="/events">Events</a>
-              </li>
-              <li class="nav-item mx-xl-2 mx-xxl-3">
-                <a class="nav-link" id="release_notes" href="/release_notes"
-                  >Release Notes</a
-                >
-              </li>
-              <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-              <!--<a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>-->
-              <!--</li>-->
-              <!--<li class="nav-item mx-2">-->
-              <!--<a class="nav-link" id="ppl_events" href="ppl_events"><i class="me-2 far fa-newspaper"></i>People & Events</a>-->
-              <!--</li>-->
+<body tabindex="0" class="d-flex flex-column h-100 bg-light">
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-purple py-4">
+      <div class="container">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-              <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
-              <!--<a class="nav-link" id="contact" href="contact">Contact</a>-->
-              <!--</li>-->
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+          <ul class="navbar-nav justify-content-evenly">
+            <li class="nav-item mx-xl-1 mx-xxl-2">
+              <a class="nav-link" id="home_menu" href="/">The <em>TP53</em> Database</a>
+            </li>
+            <li class="nav-item mx-xl-2 mx-xxl-3">
+              <a class="nav-link" id="about" href="/about">About</a>
+            </li>
+            <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+            <!--<a class="nav-link" id="tp53data" href="search_tp53data">Data-->
+            <!--Explorer</a>-->
+            <!--</li>-->
+            <li class="nav-item mx-xl-2 mx-xxl-3">
+              <a class="nav-link" id="help" href="/help">User Manual</a>
+            </li>
+            <li class="nav-item mx-xl-2 mx-xxl-3">
+              <a class="nav-link" id="resources" href="/resources">Other Resources</a>
+            </li>
+            <li class="nav-item mx-xl-2 mx-xxl-3">
+              <a class="nav-link" id="events" href="/events">Events</a>
+            </li>
+            <li class="nav-item mx-xl-2 mx-xxl-3">
+              <a class="nav-link" id="release_notes" href="/release_notes">Release Notes</a>
+            </li>
+            <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+            <!--<a class="nav-link" id="refs_corner" href="refs_corner"><i class="fas fa-book"></i> Refs Corner</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item mx-2">-->
+            <!--<a class="nav-link" id="ppl_events" href="ppl_events"><i class="me-2 far fa-newspaper"></i>People & Events</a>-->
+            <!--</li>-->
 
-              <!--<li class="nav-item ms-5 mt-2">-->
-              <!--<form action="cse_search" method="get" role="search" class="d-flex">-->
-              <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
-              <!--aria-label="Search">-->
-              <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
-              <!--</form>-->
-              <!--</li>-->
-            </ul>
+            <!--<li class="nav-item mx-xl-2 mx-xxl-3">-->
+            <!--<a class="nav-link" id="contact" href="contact">Contact</a>-->
+            <!--</li>-->
+
             <!--<li class="nav-item ms-5 mt-2">-->
-            <!--<form action="cse_search" method="get" role="search" class="d-flex ">-->
+            <!--<form action="cse_search" method="get" role="search" class="d-flex">-->
             <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
             <!--aria-label="Search">-->
             <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
             <!--</form>-->
             <!--</li>-->
-          </div>
-          <!--<form action="cse_search" method="get" role="search" class="d-flex float-end px-2">-->
+          </ul>
+          <!--<li class="nav-item ms-5 mt-2">-->
+          <!--<form action="cse_search" method="get" role="search" class="d-flex ">-->
           <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
           <!--aria-label="Search">-->
           <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
           <!--</form>-->
+          <!--</li>-->
         </div>
-      </nav>
-    </header>
-
-    {% block content %} {% endblock %}
-    <footer class="text-left text-md-center pt-4 pb-4 flex-none">
-      <div class="container">
-        <ul class="list-inline text-light">
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.cancer.gov/"
-              >Home</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_top"
-              href="mailto:tp53webadmin@mail.nih.gov"
-              >Support</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.cancer.gov/global/web/policies"
-              >Policies</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.cancer.gov/global/web/policies/accessibility"
-              >Accessibility</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://cancer.gov/global/viewing-files"
-              >Viewing Files</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.cancer.gov/global/web/policies/foia"
-              >FOIA</a
-            >
-          </li>
-        </ul>
-        <ul class="list-inline">
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.hhs.gov/"
-              >U.S. Department of Health and Human Services</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a class="text-light m-1" target="_blank" href="https://www.nih.gov"
-              >National Institutes of Health</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.cancer.gov/"
-              >National Cancer Institute</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a
-              class="text-light m-1"
-              target="_blank"
-              href="https://www.hhs.gov/vulnerability-disclosure-policy/"
-              >HHS Vulnerability Disclosure</a
-            >
-          </li>
-          <li class="pb-1 d-none d-md-inline">|</li>
-          <li class="pb-1 d-block d-md-inline">
-            <a class="text-light m-1" target="_blank" href="https://usa.gov"
-              >USA.gov</a
-            >
-          </li>
-        </ul>
-        <ul class="list-inline">
-          NIH ... Turning Discovery Into Health<sup>®</sup>
-        </ul>
+        <!--<form action="cse_search" method="get" role="search" class="d-flex float-end px-2">-->
+        <!--<input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search"-->
+        <!--aria-label="Search">-->
+        <!--<button class="btn btn-outline-light btn-sm" type="submit">Search</button>-->
+        <!--</form>-->
       </div>
-    </footer>
-  </body>
+    </nav>
+  </header>
+
+  {% block content %} {% endblock %}
+  <footer class="text-left text-md-center pt-4 pb-4 flex-none">
+    <div class="container">
+      <ul class="list-inline text-light">
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/">Home</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_top" href="mailto:tp53webadmin@mail.nih.gov">Support</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/global/web/policies">Policies</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank"
+            href="https://www.cancer.gov/global/web/policies/accessibility">Accessibility</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://cancer.gov/global/viewing-files">Viewing Files</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/global/web/policies/foia">FOIA</a>
+        </li>
+      </ul>
+      <ul class="list-inline">
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.hhs.gov/">U.S. Department of Health and Human
+            Services</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.nih.gov">National Institutes of Health</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/">National Cancer Institute</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://www.hhs.gov/vulnerability-disclosure-policy/">HHS
+            Vulnerability Disclosure</a>
+        </li>
+        <li class="pb-1 d-none d-md-inline">|</li>
+        <li class="pb-1 d-block d-md-inline">
+          <a class="text-light m-1" target="_blank" href="https://usa.gov">USA.gov</a>
+        </li>
+      </ul>
+      <ul class="list-inline">
+        NIH ... Turning Discovery Into Health<sup>®</sup>
+      </ul>
+    </div>
+  </footer>
+</body>
+
 </html>
