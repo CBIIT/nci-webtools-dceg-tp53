@@ -58,6 +58,7 @@ Talisman(
             "*.googleapis.com",
             "*.fontawesome.com",
             "*.adobedtm.com",
+            "*.cancer.gov",
             "'unsafe-inline'",
             "'unsafe-eval'",
             "data:",
