@@ -57,6 +57,7 @@ Talisman(
             "*.google-analytics.com",
             "*.googleapis.com",
             "*.fontawesome.com",
+            "*.adobedtm.com",
             "'unsafe-inline'",
             "'unsafe-eval'",
             "data:",
