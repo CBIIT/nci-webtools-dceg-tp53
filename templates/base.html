@@ -24,7 +24,9 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/libs/datatables.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/backToTop.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ncids.css') }}" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/vnd.microsoft.icon" />
   {% endblock %}
 </head>
@@ -99,61 +101,129 @@
     </nav>
   </header>
 
-  {% block content %} {% endblock %}
-  <footer class="text-left text-md-center pt-4 pb-4 flex-none">
-    <div class="container">
-      <ul class="list-inline text-light">
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/">Home</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_top" href="mailto:tp53webadmin@mail.nih.gov">Support</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/global/web/policies">Policies</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank"
-            href="https://www.cancer.gov/global/web/policies/accessibility">Accessibility</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://cancer.gov/global/viewing-files">Viewing Files</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/global/web/policies/foia">FOIA</a>
-        </li>
-      </ul>
-      <ul class="list-inline">
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.hhs.gov/">U.S. Department of Health and Human
-            Services</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.nih.gov">National Institutes of Health</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.cancer.gov/">National Cancer Institute</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://www.hhs.gov/vulnerability-disclosure-policy/">HHS
-            Vulnerability Disclosure</a>
-        </li>
-        <li class="pb-1 d-none d-md-inline">|</li>
-        <li class="pb-1 d-block d-md-inline">
-          <a class="text-light m-1" target="_blank" href="https://usa.gov">USA.gov</a>
-        </li>
-      </ul>
-      <ul class="list-inline">
-        NIH ... Turning Discovery Into Health<sup>®</sup>
-      </ul>
+  <main class="flex-grow-1">
+    {% block content %} {% endblock %}
+  </main>
+  <footer class="usa-footer usa-footer--nci-big flex-grow-0">
+    <div class="nci-footer-content">
+      <div class="usa-footer__primary-section pt-4">
+        <div class="grid-footer-container">
+          <div class="row grid-gap">
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="usa-footer__primary-content usa-footer__primary-content--collapsible">
+                <div>
+                  <span class="usa-footer__primary-link usa-footer__nci-list-header">About</span>
+                  <ul class="about-list usa-list--unstyled">
+                    <li class="usa-footer__secondary-link">
+                      <a id="aboutLink" target="_blank" rel="noopener noreferrer" href="{{ url_for('show', page='about') }}">About TP53 Database</a>
+                    </li>
+                    <li class="usa-footer__secondary-link">Last Updated: July 2019</li>
+                    <li class="usa-footer__secondary-link">Version: R20</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="usa-footer__primary-content usa-footer__primary-content--collapsible">
+                <div>
+                  <span class="usa-footer__primary-link usa-footer__nci-list-header">Resources</span>
+                  <ul class="resource-list usa-list--unstyled">
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="{{ url_for('show', page='help') }}">User Manual</a>
+                    </li>
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="{{ url_for('show', page='resources') }}">Other Resources</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="usa-footer__primary-content usa-footer__primary-content--collapsible">
+                <div>
+                  <span class="usa-footer__primary-link usa-footer__nci-list-header">Policies</span>
+                  <ul class="resource-list usa-list--unstyled">
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.cancer.gov/policies/accessibility">Accessibility</a>
+                    </li>
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.cancer.gov/policies/foia">FOIA</a>
+                    </li>
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.cancer.gov/policies/privacy-security">Privacy &amp; Security</a>
+                    </li>
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.cancer.gov/policies/disclaimer">Disclaimers</a>
+                    </li>
+                    <li class="usa-footer__secondary-link">
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html">Vulnerability Disclosure</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="usa-footer__secondary-section">
+        <div class="grid-footer-container">
+          <div class="grid-row grid-gap">
+            <div class="usa-footer__logo grid-row desktop:grid-col-5">
+              <div class="mobile-lg:grid-col-auto mobile-lg:margin-bottom-3">
+                <p class="usa-footer__logo-heading">
+                  <span class="logo__agency-name">National Cancer Institute </span>
+                  <span class="logo__parent-organization">at the National Institutes of Health</span>
+                </p>
+              </div>
+            </div>
+            <div class="usa-footer__contact-links desktop:grid-col-7">
+              <div class="usa-footer__contact-heading">Contact Us</div>
+              <div class="usa-footer__address">
+                <div class="usa-footer__contact-info grid-row grid-gap">
+                  <div class="tablet:grid-col-auto">
+                    <a href="mailto:tp53webadmin@mail.nih.gov">Support Email</a>
+                  </div>
+                  <div class="tablet:grid-col-auto tablet:margin-left-2">
+                    <a href="tel:1-800-4-CANCER">1-800-4-CANCER</a>
+                  </div>
+                  <div class="tablet:grid-col-auto tablet:margin-left-2">
+                    <a href="mailto:NCIinfo@nih.gov">NCIinfo@nih.gov</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid-row grid-gap">
+            <div class="usa-footer__social-links desktop:grid-col-5">
+              <div class="usa-footer__social-heading">Follow us</div>
+              <div class="grid-row grid-gap-1 nci-big__social">
+                <div class="grid-col-auto"><a class="usa-social-link usa-social-link--facebook" href="https://www.facebook.com/cancer.gov" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+                <div class="grid-col-auto"><a class="usa-social-link" href="https://twitter.com/thenci" target="_blank" rel="noopener noreferrer">X</a></div>
+                <div class="grid-col-auto"><a class="usa-social-link usa-social-link--instagram" href="https://www.instagram.com/nationalcancerinstitute/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+                <div class="grid-col-auto"><a class="usa-social-link usa-social-link--youtube" href="https://www.youtube.com/NCIgov" target="_blank" rel="noopener noreferrer">YouTube</a></div>
+                <div class="grid-col-auto"><a class="usa-social-link usa-social-link--linkedin" href="https://www.linkedin.com/company/nationalcancerinstitute/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+              </div>
+            </div>
+            <div class="usa-footer__contact-links desktop:grid-col-7">
+              <div class="usa-footer__address height-full">
+                <div class="usa-footer__contact-info grid-row grid-gap height-full">
+                  <address>
+                    <a href="https://www.hhs.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Health and Human Services</a>
+                    <a href="https://www.nih.gov/" target="_blank" rel="noopener noreferrer">National Institutes of Health</a>
+                    <a href="https://www.cancer.gov/" target="_blank" rel="noopener noreferrer">National Cancer Institute</a>
+                    <a href="https://usa.gov/" target="_blank" rel="noopener noreferrer">USA.gov</a>
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="usa-footer__return-to-top">
+      <button type="button" aria-label="Back To Top" id="backToTop">
+        <span class="back-to-top-text">Back To Top</span>
+      </button>
     </div>
   </footer>
 </body>
