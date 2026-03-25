@@ -1,4 +1,6 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap");
+
 /* Specify Poppins font for headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: Poppins, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif, serif; /* Use Poppins font */
@@ -21,12 +23,6 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     margin-bottom: 0;
     margin-top: 0;
-}
-.usa-banner__header-text,
-.usa-banner__header-text:before {
-    display: flex;
-    margin-right: .75rem;
-    width: 100%;
 }
 
 .usa-banner {
