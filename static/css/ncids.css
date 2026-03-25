@@ -10,41 +10,12 @@ h1, h2, h3, h4, h5, h6 {
     font-family:"Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 
-  :root {
-    --nci-icon-arrow-up: none;
-    --nci-icon-plus: none;
-    --nci-icon-chevron: none;
-    --nci-icon-chevron-alt: none;
-  }
-  
-
-
 .usa-banner__header-text,
 .usa-banner__header-text:before {
     display: flex;
     margin-right: .75rem;
     width: 100%;
 }
-.usa-banner {
-    font-size: .82rem;
-    padding-bottom: 0;
-}
-
-.usa-banner__inner {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-.usa-banner {
-background-color: #f0f0f0;
-font-family: Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-font-size: 1.01rem;
-line-height: 1.6;
-}
-.usa-banner__header {
-    min-height: 0;
-}
-
-
 .usa-banner__header-text {
     font-size: .76rem;
     line-height: 1.2;
@@ -58,10 +29,6 @@ line-height: 1.6;
     width: 100%;
 }
 
-.usa-banner__header {
-    font-size: .76rem;
-    font-weight: 400;
-}
 .usa-banner {
     font-family: Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 1.01rem;
@@ -98,7 +65,7 @@ line-height: 1.6;
     padding-right: 1rem;
   }
   .usa-banner__header-text:before {
-    background-image: url('https://raw.githubusercontent.com/CBIIT/nci-analysis-tools-web-presence/master/common/images/usa_banner.png');
+    background-image: url("../img/usa_banner.svg");
     background-size: 16px 11px;
     content: "";
     display: block;
@@ -327,22 +294,7 @@ font-weight:600;
     width: 33.3333333333%;
 }
 .usa-footer--nci-big .usa-footer__primary-section .usa-footer__primary-content--collapsible .usa-list--unstyled.hidden {
-    display: block;
-}
-.usa-footer--nci-big .usa-footer__primary-section .usa-footer__primary-content .usa-list--unstyled {
-    margin-bottom: 1.5rem;
-    margin-top: .25rem;
-    padding: .75rem 0 2rem;
-}
-.usa-list {
-    line-height: 1.6;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    padding-left: 3ch;
-}
-.usa-list--unstyled>li {
-    margin-bottom: 0;
-    max-width: unset;
+    display: none;
 }
 .usa-footer__secondary-link {
     line-height: 1.2;
@@ -371,9 +323,6 @@ font-weight:600;
     visibility: visible;
     width: 100%;
     font-weight: 600;
-}
-.usa-footer--nci-big .usa-footer__primary-section .usa-footer__primary-content--collapsible .usa-list--unstyled.hidden {
-    display: block;
 }
 .usa-footer--nci-big .usa-footer__primary-section .usa-footer__primary-content .usa-list--unstyled {
     margin-bottom: 1.5rem;
@@ -559,21 +508,6 @@ font-weight:600;
     font-size: .89rem;
     line-height: 1.6;
 }
-
-.usa-footer__return-to-top {
-    line-height: 1;
-    padding-bottom: 1.25rem;
-    padding-top:1.25rem
-}
-
-@media (min-width:64em){.usa-footer>.grid-container{padding-left:2rem;padding-right:2rem}}
-.usa-footer__return-to-top{line-height:1;padding-bottom:1.25rem;padding-top:1.25rem}
-.usa-footer__return-to-top a{color:#01679d;text-decoration:underline}
-.usa-footer__return-to-top a:visited{color:#54278f}
-.usa-footer__return-to-top a:hover{color:#004971}
-.usa-footer__return-to-top a:active{color:#00314b}
-.usa-footer__return-to-top a:focus{outline:.25rem solid #2491ff;outline-offset:0}
-
 
 .ml-3_5{
  margin-left: 3.5rem;
@@ -1584,10 +1518,6 @@ font-weight:600;
         }
       }
 
-      .usa-footer--nci-big .usa-footer__primary-section .usa-footer__primary-content--collapsible .usa-list--unstyled.hidden {
-        display: block;
-    }
-      
       .nci-footer-content .usa-footer__primary-link {
         display: block;
         font-weight: bold;
