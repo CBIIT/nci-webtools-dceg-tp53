@@ -45,6 +45,9 @@ from jinja2 import TemplateNotFound
 app = Flask(__name__)
 app.config["TESTING"] = settings.IS_TEST
 app.config["ENV"] = "development" if settings.IS_TEST else "production"
+# Let Jinja pick up template edits under gunicorn when IS_TEST (local dev).
+if settings.IS_TEST:
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
 logger = logging.getLogger("main_logger")
 
 
@@ -96,6 +99,7 @@ Talisman(
             "*.fontawesome.com",
             "*.adobedtm.com",
             "*.cancer.gov",
+            "dap.digitalgov.gov",
             "'unsafe-inline'",
             "'unsafe-eval'",
             "data:",
