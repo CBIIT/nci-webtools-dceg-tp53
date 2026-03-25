@@ -215,11 +215,6 @@ font-weight:600;
     padding-left: 6rem;
     padding-right: 6rem;
 }
-.usa-footer__return-to-top {
-    line-height: 1;
-    padding-bottom: 1.25rem;
-    padding-top: 1.25rem;
-}
 .usa-footer--nci-big .usa-footer__primary-section {
     background-color: #004971;
 }
@@ -583,26 +578,6 @@ font-weight:600;
 }
 
 
-.move-to-top {
-    position: fixed;
-    bottom: 0; /* Adjust this value as needed */
-    right: 0; /* Adjust this value as needed */
-    width: 75px;
-    height: 75px;
-    background-color: #37abc8;
-    border-top-left-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 0.76rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.25s ease-in-out;
-    z-index: 10;
-  }
-
   .nci-footer-content{
     padding-bottom: 0px;
     height: auto !important;
@@ -613,72 +588,6 @@ font-weight:600;
     color: #fff;
     }
   
-    .usa-footer__nci-return-to-top {
-        bottom: 0;
-        box-sizing: border-box;
-        height: 75px;
-        opacity: 0;
-        position: fixed;
-        right: 0;
-        text-transform: uppercase;
-        transition: all 0.25s ease-in-out;
-        width: 75px;
-        z-index: 10;
-      }
-      .usa-footer__nci-return-to-top a {
-        background: #007bbd;
-        border-top-left-radius: 100%;
-        color: #fff;
-        display: block;
-        font-size: 0.76rem;
-        font-weight: 600;
-        height: 75px;
-        line-height: 1.2;
-        padding: 35px 6px 0 16px;
-        text-align: center;
-        text-decoration: none;
-        width: 75px;
-      }
-      .usa-footer__nci-return-to-top a:active,
-      .usa-footer__nci-return-to-top a:visited {
-        color: #fff;
-      }
-      .usa-footer__nci-return-to-top.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      .usa-footer__nci-return-to-top.hide {
-        opacity: 0;
-        visibility: hidden;
-      }
-      @media (max-width: 63.99em) {
-        .usa-footer__nci-return-to-top a span {
-          display: none;
-        }
-        .usa-footer__nci-return-to-top a {
-          padding-top: 32px;
-        }
-        .usa-footer__nci-return-to-top a:after {
-          background: var(--nci-icon-arrow-up) no-repeat 50% / contain;
-          content: "";
-          display: inline-block;
-          height: 4ex;
-          margin-left: 1px;
-          vertical-align: middle;
-          width: 4ex;
-        }
-        @supports ((-webkit-mask: url("")) or (mask: url(""))) {
-          .usa-footer__nci-return-to-top a:after {
-            background: none;
-            background-color: #fff;
-            -webkit-mask: var(--nci-icon-arrow-up) no-repeat center/contain;
-            mask: var(--nci-icon-arrow-up) no-repeat center/contain;
-          }
-        }
-        .usa-footer__nci-return-to-top a:after {
-          margin-left: 7px;
-        }
-      }
       .usa-footer {
         font-family: Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
           Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
@@ -717,28 +626,6 @@ font-weight:600;
           padding-left: 2rem;
           padding-right: 2rem;
         }
-      }
-      .usa-footer__return-to-top {
-        line-height: 1;
-        padding-bottom: 1.25rem;
-        padding-top: 1.25rem;
-      }
-      .usa-footer__return-to-top a {
-        color: #01679d;
-        text-decoration: underline;
-      }
-      .usa-footer__return-to-top a:visited {
-        color: #54278f;
-      }
-      .usa-footer__return-to-top a:hover {
-        color: #004971;
-      }
-      .usa-footer__return-to-top a:active {
-        color: #00314b;
-      }
-      .usa-footer__return-to-top a:focus {
-        outline: 0.25rem solid #2491ff;
-        outline-offset: 0;
       }
       .usa-footer__nav {
         border-bottom: 1px solid #a9aeb1;
@@ -1560,6 +1447,7 @@ font-weight:600;
         position: fixed;
         bottom: 0;
         right: 0;
+        padding: 0;
         width: 85px;
         height: 85px;
         background-color: #027BBD;

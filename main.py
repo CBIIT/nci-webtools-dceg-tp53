@@ -51,7 +51,7 @@ if settings.IS_TEST:
 logger = logging.getLogger("main_logger")
 
 
-def parse_version_and_date(version_string):
+def parse_version_and_date(version_string, build_date=None):
     if not version_string:
         today = datetime.utcnow().strftime("%Y-%m-%d")
         return {"version": "dev", "date": today}
@@ -66,11 +66,18 @@ def parse_version_and_date(version_string):
     else:
         version = version_string
 
-    date_match = re.search(r"(\d{4})[-_]?(\d{2})[-_]?(\d{2})", version_string)
-    if date_match:
-        date = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}"
+    if build_date:
+        build_date_match = re.search(r"(\d{4})[-_]?(\d{2})[-_]?(\d{2})", build_date)
+        if build_date_match:
+            date = f"{build_date_match.group(1)}-{build_date_match.group(2)}-{build_date_match.group(3)}"
+        else:
+            date = build_date
     else:
-        date = datetime.utcnow().strftime("%Y-%m-%d")
+        date_match = re.search(r"(\d{4})[-_]?(\d{2})[-_]?(\d{2})", version_string)
+        if date_match:
+            date = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}"
+        else:
+            date = datetime.utcnow().strftime("%Y-%m-%d")
 
     return {"version": version, "date": date}
 
@@ -78,7 +85,8 @@ def parse_version_and_date(version_string):
 @app.context_processor
 def inject_footer_metadata():
     metadata = parse_version_and_date(
-        os.environ.get("APP_VERSION") or settings.DATA_VERSION
+        os.environ.get("APP_VERSION") or settings.DATA_VERSION,
+        os.environ.get("APP_BUILD_DATE"),
     )
     return {
         "footer_version": metadata["version"],
