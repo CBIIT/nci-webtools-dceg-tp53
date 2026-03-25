@@ -1,3 +1,5 @@
+'use strict';
+
 function initBackToTop(selector = "#backToTop", threshold = 100) {
   const backToTop = document.querySelector(selector);
   if (!backToTop) return function () {};
