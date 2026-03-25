@@ -1,13 +1,15 @@
 function initBackToTop(selector = "#backToTop", threshold = 100) {
   const backToTop = document.querySelector(selector);
   if (!backToTop) return function () {};
+  const backToTopContainer = backToTop.parentElement;
 
   const toggleBackToTop = () => {
+    if (!backToTopContainer) return;
     if (document.body.scrollHeight <= window.innerHeight) {
-      backToTop.parentElement.style.display = "none";
+      backToTopContainer.style.display = "none";
       return;
     }
-    backToTop.parentElement.style.display = window.scrollY > threshold ? "flex" : "none";
+    backToTopContainer.style.display = window.scrollY > threshold ? "flex" : "none";
   };
 
   const handleBackToTop = () => {
