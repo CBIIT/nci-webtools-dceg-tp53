@@ -369,10 +369,10 @@ body {
 .usa-footer--nci-big .usa-footer__secondary-section .usa-footer__social-links .usa-social-link .usa-icon {
     fill: #face00;
     color: #face00;
-    height: 40px;
-    margin-left: -3px;
-    margin-right: -3px;
-    width: 40px;
+    height: 34px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 34px;
 }
 .usa-icon {
     fill: currentColor;
@@ -1201,46 +1201,6 @@ body {
 }
 .usa-footer--nci-big .usa-footer__secondary-section .usa-footer__social-links {
     padding-bottom: 0;
-}
-.usa-footer--nci-big
-    .usa-footer__secondary-section
-    .usa-footer__social-links
-    .usa-social-link {
-    align-items: center;
-    background-color: rgba(250, 206, 0, 0.12);
-    border: 1.5px solid #face00;
-    border-radius: 50%;
-    display: inline-flex;
-    height: 36px;
-    justify-content: center;
-    line-height: 1;
-    padding: 0;
-    text-align: center;
-    width: 36px;
-}
-.usa-footer--nci-big
-    .usa-footer__secondary-section
-    .usa-footer__social-links
-    .usa-social-link
-    .usa-icon {
-    fill: #face00;
-    color: #face00;
-    height: 16px;
-    margin-left: 0;
-    margin-right: 0;
-    width: 16px;
-}
-.usa-footer--nci-big
-    .usa-footer__secondary-section
-    .usa-footer__social-links
-    .usa-social-link
-    .social-x {
-    color: #face00;
-    display: inline-block;
-    font-family: Poppins, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1;
 }
 .usa-footer--nci-big .usa-footer__secondary-section .usa-footer__contact-links {
     margin-top: 1.25rem;
