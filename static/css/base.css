@@ -317,6 +317,48 @@ a.hover-arrow-link:hover::after {
   background: #373d85;
 }
 
+/* 508: link contrast on dark banner (exceeds WCAG AA vs default #4f5edf on #373d85) */
+.page-banner-temp .page-banner-temp__link {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.page-banner-temp .page-banner-temp__link:hover,
+.page-banner-temp .page-banner-temp__link:focus {
+  color: #f0f4ff;
+  text-decoration: underline;
+}
+.page-banner-temp .page-banner-temp__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* 508 / WCAG 2.4.1 Bypass Blocks */
+.skip-to-main {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  z-index: 10001;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-to-main:focus,
+.skip-to-main:focus-visible {
+  position: fixed;
+  left: 0.75rem;
+  top: 0.75rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  background-color: #2f2c55;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  clip: auto;
+}
+
 .three_d_viwer {
   width: 800px;
 }
