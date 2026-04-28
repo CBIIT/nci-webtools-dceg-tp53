@@ -262,7 +262,8 @@ var selectAllRows = function (t, bool) {
 var updateActionButtonGroups = function (selectedRowCounts, selectedRowCellLineCounts) {
     $('.cart-count').html(selectedRowCounts);
     $('.cell-line-count-badge').html(selectedRowCellLineCounts);
-    $('button.cell-search-button').toggleClass('disabled', selectedRowCellLineCounts == 0);
+    $('button.cell-search-button').toggleClass('disabled', selectedRowCellLineCounts == 0)
+        .prop('disabled', selectedRowCellLineCounts == 0);
 };
 
 
