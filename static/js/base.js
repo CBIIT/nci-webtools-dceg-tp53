@@ -54,6 +54,10 @@ $(document).ready(function () {
     // WCAG 1.3.3 / GSA: announce new-tab for all target="_blank" links
     (function enhanceNewTabLinks() {
         var hint = ' (opens in new tab)';
+        var hintKeywords = ['opens in new', 'new tab'];
+        function alreadyHinted(text) {
+            return hintKeywords.some(function (kw) { return text.indexOf(kw) >= 0; });
+        }
         $('a[target="_blank"]').each(function () {
             var a = this;
             if (a.getAttribute('data-skip-new-tab-a11y') === 'true') {
@@ -61,14 +65,14 @@ $(document).ready(function () {
             }
             var al = a.getAttribute('aria-label');
             if (al !== null && al !== '') {
-                if (al.indexOf('opens in new') < 0 && al.indexOf('new tab') < 0) {
+                if (!alreadyHinted(al)) {
                     a.setAttribute('aria-label', al + hint);
                 }
                 return;
             }
             var hasManual = false;
             $(a).find('.visually-hidden').each(function () {
-                if ((this.textContent || '').indexOf('opens in new') >= 0) {
+                if (alreadyHinted(this.textContent || '')) {
                     hasManual = true;
                 }
             });

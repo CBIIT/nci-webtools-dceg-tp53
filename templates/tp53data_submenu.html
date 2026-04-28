@@ -20,7 +20,7 @@
                     Explore Datasets
                 </li>
                 <li class="nav-item">
-                    <a id="gv-exp-btn" role="button" aria-expanded="false"
+                    <a id="gv-exp-btn" aria-expanded="false"
                        data-bs-toggle="collapse"
                        data-bs-target="#gv-collapse"
                        aria-controls="gv-collapse" class="nav-link"
@@ -41,7 +41,7 @@
                     </li>
                 </div>
                 <li class="nav-item">
-                    <a id="sm-exp-btn" role="button" aria-expanded="false"
+                    <a id="sm-exp-btn" aria-expanded="false"
                        aria-controls="sm-collapse" class="nav-link"
                        href="/explore_sm" data-bs-parent="#expl-ul">Tumor Variants</a>
                 </li>
@@ -61,7 +61,7 @@
                 </div>
 
                 <li class="nav-item">
-                    <a id="gm-exp-btn" role="button" aria-expanded="false"
+                    <a id="gm-exp-btn" aria-expanded="false"
                        aria-controls="gm-collapse" class="nav-link"
                        href="/explore_gm">Germline Variants</a>
                 </li>
@@ -78,7 +78,7 @@
                 </div>
 
                 <li class="nav-item">
-                    <a id="cl-exp-btn" role="button" aria-expanded="false"
+                    <a id="cl-exp-btn" aria-expanded="false"
                        aria-controls="cl-collapse" class="nav-link"
                        href="/explore_cl">Cell Lines</a>
                 </li>
@@ -95,7 +95,7 @@
                 </div>
 
                 <li class="nav-item">
-                    <a id="mm-exp-btn" role="button" aria-expanded="false"
+                    <a id="mm-exp-btn" aria-expanded="false"
                        aria-controls="mm-collapse" class="nav-link"
                        href="/explore_mm">Mouse Models</a>
                 </li>
@@ -109,7 +109,7 @@
                 </div>
 
                 <li class="nav-item">
-                    <a id="eim-exp-btn" role="button" aria-expanded="false"
+                    <a id="eim-exp-btn" aria-expanded="false"
                        aria-controls="eim-collapse" class="nav-link"
                        href="/explore_eim">Experimentally Induced Variants</a>
                 </li>
@@ -136,13 +136,13 @@
     {% block subcontent %}
     {% endblock %}
 </main>
-<div class="spinner">
+<div class="spinner" aria-live="polite">
     <div class="spinner-group d-flex justify-content-center">
         {% for n in range(3) %}
         {% set color_factor = 20 * n %}
         <div class="spinner-grow mx-1" style="color: hsl(174, 40%, {{ color_factor }}%); width:40px; height:40px;"
              role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="visually-hidden">Loading...</span>
         </div>
         {% endfor %}
     </div>

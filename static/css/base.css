@@ -193,6 +193,11 @@ a:hover {
   cursor: pointer;
 }
 
+/* WCAG 1.4.1: body text links must be distinguishable without relying on color alone */
+main a:not(.btn):not(.nav-link):not(.list-group-item):not(.card-header-text):not(.usa-social-link):not(.skip-to-main):not(.a-link):not(.hover-arrow-link):not(.usa-nav__link) {
+  text-decoration: underline;
+}
+
 a.hover-arrow-link:hover::after {
   display: inline-block;
   width: 1.2rem;
@@ -208,7 +213,7 @@ a.hover-arrow-link:hover::after {
   font-size: 1rem;
   color: white;
   margin: 5px 0;
-  background-color: rgba(84, 181, 171, 0.8);
+  background-color: #2a7c6f;
 }
 
 .collapsible-sidebar {
@@ -415,7 +420,7 @@ h1 a {
 }
 
 .card-header {
-  background-color: rgba(84, 181, 171, 0.9);
+  background-color: #2a7c6f;
   padding: 10px 32px;
   font-weight: bold;
 }
