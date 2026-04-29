@@ -91,14 +91,12 @@ $(document).ready(function () {
        var hidden_id = $(collapsible_class +':not(.show)').attr('id');
        var shown_collapse = document.getElementById(shown_id);
        var hidden_collapse = document.getElementById(hidden_id);
-       new bootstrap.Collapse(shown_collapse, {
-           show: false,
-           hide: true
-       });
-       new bootstrap.Collapse(hidden_collapse, {
-           show: true,
-           hide: false
-       });
+       if (shown_collapse) {
+           bootstrap.Collapse.getOrCreateInstance(shown_collapse, { toggle: false }).hide();
+       }
+       if (hidden_collapse) {
+           bootstrap.Collapse.getOrCreateInstance(hidden_collapse, { toggle: false }).show();
+       }
    }
 
    $('a.clear-all-select').on('click', function (e) {
@@ -122,27 +120,7 @@ $(document).ready(function () {
            .trigger('change');
    });
 
-   set_active_submenu(active_submenu);
-
-
 });
-
-function set_active_submenu(submenu_id) {
-    if (!submenu_id)
-        return;
-    var active_submenu_div = $('#'+submenu_id);
-    var collapsed_div_id = active_submenu_div.attr('aria-controls');
-    // var collapsed_div_id = $(".collapsible-sidebar #" + submenu_id).attr('aria-controls');
-    active_submenu_div.attr('aria-expanded', true);
-    toggle_collapse_jQSel($(".collapsible-sidebar #" + collapsed_div_id), false);
-    // toggle_collapse_jQSel($(".collapsible-sidebar #" + submenu_id), false);
-
-    // toggle_collapse_jQSel($(".collapsible-sidebar #" + submenu_id + ".sub-navitem").parents('.collapse'), false);
-
-    // $(".sidebar, .collapsible-sidebar").find(".active").removeClass("active");
-    // $('#' + submenu_id).addClass("active");
-
-}
 var enableTooltip = function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {

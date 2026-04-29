@@ -274,7 +274,7 @@ a.hover-arrow-link:hover::after {
   ul.nav
   > li.nav-item
   a[aria-expanded="true"] {
-  background-color: #7ebdb7;
+  background-color: #2a7c6f;
 }
 .collapsible-sidebar .nav-link {
   padding-left: 1.5rem;
@@ -311,6 +311,12 @@ a.hover-arrow-link:hover::after {
 .collapsible-sidebar li.nav-item a:hover,
 .collapsible-sidebar li.nav-item:hover {
   background-color: #6a9f9a;
+}
+
+/* 508: nested nav / collapse must paint the same bg as the sidebar (avoid white-on-#f8f9fa vs body bg-light) */
+.collapsible-sidebar ul.nav,
+.collapsible-sidebar [id$="-collapse"] {
+  background-color: var(--bs-secondary, #6c757d);
 }
 
 .page-banner {
@@ -485,7 +491,8 @@ h1 a {
 
 .collapsible-sidebar:hover .sidebar-icon,
 .collapsible-sidebar.hover .sidebar-icon,
-.collapsible-sidebar .nav,
+.collapsible-sidebar #expl-ul,
+.collapsible-sidebar #dd-ul,
 .collapsible-sidebar hr {
   display: none;
 }
@@ -494,9 +501,12 @@ h1 a {
 /*display: none;*/
 /*}*/
 
-.collapsible-sidebar:hover .nav,
+/* Only top-level lists — not .nav on nested #*-collapse (Bootstrap needs to control .collapse display) */
+.collapsible-sidebar:hover #expl-ul,
+.collapsible-sidebar:hover #dd-ul,
 .collapsible-sidebar:hover hr,
-.collapsible-sidebar.hover .nav,
+.collapsible-sidebar.hover #expl-ul,
+.collapsible-sidebar.hover #dd-ul,
 .collapsible-sidebar.hover hr {
   display: block;
 }
@@ -715,10 +725,12 @@ footer img {
   .collapsible-sidebar.hover:hover {
     left: 0;
   }
-  .collapsible-sidebar.hover .nav {
+  .collapsible-sidebar.hover #expl-ul,
+  .collapsible-sidebar.hover #dd-ul {
     display: none;
   }
-  .collapsible-sidebar.hover:hover .nav {
+  .collapsible-sidebar.hover:hover #expl-ul,
+  .collapsible-sidebar.hover:hover #dd-ul {
     display: block;
   }
 

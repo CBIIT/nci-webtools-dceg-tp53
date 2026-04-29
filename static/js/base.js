@@ -105,12 +105,17 @@ $(window).on('pagehide', function(){
 
 
 var toggle_collapse_jQSel = function (selections, triggerHide) {
-    $.each(selections, function (index, value) {
-        var div_ids = $(value).prop('id');
-        var divCollapse = document.getElementById(div_ids);
-        new bootstrap.Collapse(divCollapse,
-            triggerHide ? {hide: true, show: false} : {hide: false, show: true}
-        );
+    jQuery(selections).each(function () {
+        var el = this;
+        if (!el || el.nodeType !== 1 || !el.id) {
+            return;
+        }
+        var c = bootstrap.Collapse.getOrCreateInstance(el, { toggle: false });
+        if (triggerHide) {
+            c.hide();
+        } else {
+            c.show();
+        }
     });
 };
 
