@@ -51,7 +51,7 @@
             <div class="accordion-body bg-light">
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                        <legend id="{{ id_prefix }}_carriers_only_legend" class="text-end col-form-label col-sm-3 pt-0">
                             Confirmed or Obligate Carriers Only
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                     data-bs-html="true"
@@ -66,7 +66,8 @@
                                 <input class="form-check-input" type="checkbox"
                                        id="{{ id_prefix }}_carriers_only" name="{{ id_prefix }}_carriers_only"
                                        value="checked">
-
+                                <label class="form-check-label visually-hidden" for="{{ id_prefix }}_carriers_only">Confirmed
+                                    or Obligate Carriers Only</label>
                             </div>
                             <input class="form-check-input " type="hidden"
                                    id="{{ id_prefix }}_confirmed_carriers" name="{{ id_prefix }}_carrier"
@@ -79,7 +80,7 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                        <legend id="{{ id_prefix }}_affected_only_legend" class="text-end col-form-label col-sm-3 pt-0">
                             Cancer-Affected Individuals Only
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                     data-bs-html="true"
@@ -93,6 +94,8 @@
                                 <input class="form-check-input" type="checkbox"
                                        id="{{ id_prefix }}_affected_only" name="{{ id_prefix }}_affected_only"
                                        value="False">
+                                <label class="form-check-label visually-hidden" for="{{ id_prefix }}_affected_only">Cancer-Affected
+                                    Individuals Only</label>
                             </div>
                         </div>
                     </div>

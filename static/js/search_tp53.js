@@ -1,6 +1,50 @@
 /* search_tp53.js */
 'use strict';
 
+var syncChosenFromSelect = function (selectEl) {
+    var s = selectEl;
+    if (!s || !s.id) {
+        return;
+    }
+    var container = document.getElementById(s.id + '_chosen');
+    if (!container) {
+        return;
+    }
+    var labelledBy = s.getAttribute('aria-labelledby');
+    var ariaLabel = s.getAttribute('aria-label');
+    var plTrim = s.getAttribute('data-placeholder');
+    if (plTrim) {
+        plTrim = String(plTrim).replace(/\s*\.\.\.\s*$/, '').trim();
+    } else {
+        plTrim = '';
+    }
+    var inputs = container.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) {
+        var inp = inputs[i];
+        if (inp.type === 'hidden' || inp.type === 'checkbox' || inp.type === 'radio') {
+            continue;
+        }
+        if (labelledBy) {
+            inp.removeAttribute('aria-label');
+            inp.setAttribute('aria-labelledby', labelledBy);
+        } else if (ariaLabel) {
+            inp.removeAttribute('aria-labelledby');
+            inp.setAttribute('aria-label', ariaLabel);
+        } else if (plTrim) {
+            inp.removeAttribute('aria-labelledby');
+            inp.setAttribute('aria-label', plTrim);
+        }
+        if (plTrim) {
+            inp.setAttribute('placeholder', plTrim);
+        }
+    }
+};
+
+var syncAllChosen = function () {
+    $('select.chosen-select').each(function () {
+        syncChosenFromSelect(this);
+    });
+};
 
 $(document).ready(function () {
     if ($('table.result-table').length === 0)
@@ -17,6 +61,11 @@ $(document).ready(function () {
         width: "100%",
         search_contains: true,
         max_shown_results: 300
+    });
+    syncAllChosen();
+    setTimeout(syncAllChosen, 0);
+    $(document).on('chosen:updated', 'select.chosen-select', function () {
+        syncChosenFromSelect(this);
     });
 
     $('.topo-morph-select').on('change', function () {
