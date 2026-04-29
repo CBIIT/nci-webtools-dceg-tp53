@@ -194,7 +194,7 @@ a:hover {
 }
 
 /* WCAG 1.4.1: body text links must be distinguishable without relying on color alone */
-main a:not(.btn):not(.nav-link):not(.list-group-item):not(.card-header-text):not(.usa-social-link):not(.skip-to-main):not(.a-link):not(.hover-arrow-link):not(.usa-nav__link) {
+a {
   text-decoration: underline;
 }
 
