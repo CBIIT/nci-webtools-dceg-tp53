@@ -3,7 +3,7 @@
 {{ super() }}
 <script type="text/javascript">
     active_menu = 'home_menu';
-    active_submenu = '';
+    var active_submenu = {{ (active_submenu|default(''))|tojson }};
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/search_tp53.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/chosen.jquery.min.js') }}"></script>
@@ -12,6 +12,13 @@
 {% endblock %}
 
 {% block content %}
+{% set a = active_submenu|default('') %}
+{% set open_gv = a in ['gv-exp-btn', 'search_gene_by_var', 'search_gene_by_mut', 'view_val_poly'] %}
+{% set open_sm = a in ['sm-exp-btn', 'search_somatic_mut', 'search_somatic_prevalence', 'stats_somatic_mut', 'prognosis_somatic_stats', 'db_dev_somatic_stats'] %}
+{% set open_gm = a in ['gm-exp-btn', 'search_germline_mut', 'stats_germline_mut', 'db_dev_germline_stats'] %}
+{% set open_cl = a in ['cl-exp-btn', 'search_cell_lines', 'stats_cell_lines'] %}
+{% set open_mm = a in ['mm-exp-btn', 'view_mouse'] %}
+{% set open_eim = a in ['eim-exp-btn', 'view_exp_ind_mut'] %}
 <main class="narrow-panel">
     <div class="bg-secondary collapsible-sidebar has-submenubar hover">
         <div class="position-sticky pt-2">
@@ -20,107 +27,135 @@
                     Explore Datasets
                 </li>
                 <li class="nav-item">
-                    <a id="gv-exp-btn" role="button" aria-expanded="false"
-                       data-bs-toggle="collapse"
-                       data-bs-target="#gv-collapse"
-                       aria-controls="gv-collapse" class="nav-link"
-                       data-bs-parent="#expl-ul">Functional / Structural Data</a>
+                    <a id="gv-exp-btn" role="button" class="nav-link"
+                       data-bs-toggle="collapse" data-bs-target="#gv-collapse"
+                       href="#gv-collapse" aria-controls="gv-collapse"
+                       aria-expanded="{{ 'true' if open_gv else 'false' }}">Functional / Structural Data</a>
+                    <ul id="gv-collapse" class="nav flex-column pb-3 collapse{{ ' show' if open_gv else '' }}"
+                        data-bs-parent="#expl-ul">
+                        <li class="nav-item sub-navitem small">
+                            <a class="nav-link" href="/explore_gv">Dataset overview</a>
+                        </li>
+                        <li id="search_gene_by_var" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/search_gene_by_var">Search by Gene Variants</a>
+                        </li>
+                        <li id="search_gene_by_mut" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/search_gene_by_mut">Search by Variant Features</a>
+                        </li>
+                        <li id="view_val_poly" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/view_val_poly">View Validated Polymorphism</a>
+                        </li>
+                        <li class="nav-item sub-navitem">
+                            <a class="nav-link" href="/get_tp53data#get_annot">Downloads</a>
+                        </li>
+                    </ul>
                 </li>
-                <div id="gv-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
-                    <li id="search_gene_by_var" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/search_gene_by_var">Search by Gene Variants</a>
-                    </li>
-                    <li id="search_gene_by_mut" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/search_gene_by_mut">Search by Variant Features</a>
-                    </li>
-                    <li id="view_val_poly" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/view_val_poly">View Validated Polymorphism</a>
-                    </li>
-                    <li class="nav-item sub-navitem">
-                        <a class="nav-link" href="/get_tp53data#get_annot">Downloads</a>
-                    </li>
-                </div>
                 <li class="nav-item">
-                    <a id="sm-exp-btn" role="button" aria-expanded="false"
-                       aria-controls="sm-collapse" class="nav-link"
-                       href="/explore_sm" data-bs-parent="#expl-ul">Tumor Variants</a>
+                    <a id="sm-exp-btn" role="button" class="nav-link"
+                       data-bs-toggle="collapse" data-bs-target="#sm-collapse"
+                       href="#sm-collapse" aria-controls="sm-collapse"
+                       aria-expanded="{{ 'true' if open_sm else 'false' }}">Tumor Variants</a>
+                    <ul id="sm-collapse" class="nav flex-column pb-3 collapse{{ ' show' if open_sm else '' }}"
+                        data-bs-parent="#expl-ul">
+                        <li class="nav-item sub-navitem small">
+                            <a class="nav-link" href="/explore_sm">Dataset overview</a>
+                        </li>
+                        <li id="search_somatic_mut" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/search_somatic_mut">Search Tumor Variants</a>
+                        </li>
+                        <li id="search_somatic_prevalence" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/search_somatic_prevalence">Search Variant Prevalence</a>
+                        </li>
+                        <li id="stats_somatic_mut" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/stats_somatic_mut">Selected Statistics</a>
+                        </li>
+                        <li class="nav-item sub-navitem">
+                            <a class="nav-link" href="/get_tp53data#get_som_mut">Downloads</a>
+                        </li>
+                    </ul>
                 </li>
-                <div id="sm-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
-                    <li id="search_somatic_mut" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/search_somatic_mut">Search Tumor Variants</a>
-                    </li>
-                    <li id="search_somatic_prevalence" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/search_somatic_prevalence">Search Variant Prevalence</a>
-                    </li>
-                    <li id="stats_somatic_mut" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/stats_somatic_mut">Selected Statistics</a>
-                    </li>
-                    <li class="nav-item sub-navitem">
-                        <a class="nav-link" href="/get_tp53data#get_som_mut">Downloads</a>
-                    </li>
-                </div>
 
                 <li class="nav-item">
-                    <a id="gm-exp-btn" role="button" aria-expanded="false"
-                       aria-controls="gm-collapse" class="nav-link"
-                       href="/explore_gm">Germline Variants</a>
+                    <a id="gm-exp-btn" role="button" class="nav-link"
+                       data-bs-toggle="collapse" data-bs-target="#gm-collapse"
+                       href="#gm-collapse" aria-controls="gm-collapse"
+                       aria-expanded="{{ 'true' if open_gm else 'false' }}">Germline Variants</a>
+                    <ul id="gm-collapse" class="nav flex-column pb-3 collapse{{ ' show' if open_gm else '' }}"
+                        data-bs-parent="#expl-ul">
+                        <li class="nav-item sub-navitem small">
+                            <a class="nav-link" href="/explore_gm">Dataset overview</a>
+                        </li>
+                        <li id="search_germline_mut" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/search_germline_mut">Search Germline Variants</a>
+                        </li>
+                        <li id="stats_germline_mut" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/stats_germline_mut">Selected Statistics</a>
+                        </li>
+                        <li class="nav-item sub-navitem">
+                            <a class="nav-link" href="/get_tp53data#get_germ_mut">Downloads</a>
+                        </li>
+                    </ul>
                 </li>
-                <div id="gm-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
-                    <li id="search_germline_mut" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/search_germline_mut">Search Germline Variants</a>
-                    </li>
-                    <li id="stats_germline_mut" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/stats_germline_mut">Selected Statistics</a>
-                    </li>
-                    <li class="nav-item sub-navitem">
-                        <a class="nav-link" href="/get_tp53data#get_germ_mut">Downloads</a>
-                    </li>
-                </div>
 
                 <li class="nav-item">
-                    <a id="cl-exp-btn" role="button" aria-expanded="false"
-                       aria-controls="cl-collapse" class="nav-link"
-                       href="/explore_cl">Cell Lines</a>
+                    <a id="cl-exp-btn" role="button" class="nav-link"
+                       data-bs-toggle="collapse" data-bs-target="#cl-collapse"
+                       href="#cl-collapse" aria-controls="cl-collapse"
+                       aria-expanded="{{ 'true' if open_cl else 'false' }}">Cell Lines</a>
+                    <ul id="cl-collapse" class="nav flex-column pb-3 collapse{{ ' show' if open_cl else '' }}"
+                        data-bs-parent="#expl-ul">
+                        <li class="nav-item sub-navitem small">
+                            <a class="nav-link" href="/explore_cl">Dataset overview</a>
+                        </li>
+                        <li id="search_cell_lines" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/search_cell_lines">Search Cell-Line Data</a>
+                        </li>
+                        <li id="stats_cell_lines" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/stats_cell_lines">Selected Statistics</a>
+                        </li>
+                        <li class="nav-item sub-navitem">
+                            <a class="nav-link" href="/get_tp53data#get_cell">Downloads</a>
+                        </li>
+                    </ul>
                 </li>
-                <div id="cl-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
-                    <li id="search_cell_lines" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/search_cell_lines">Search Cell-Line Data</a>
-                    </li>
-                    <li id="stats_cell_lines" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/stats_cell_lines">Selected Statistics</a>
-                    </li>
-                    <li class="nav-item sub-navitem">
-                        <a class="nav-link" href="/get_tp53data#get_cell">Downloads</a>
-                    </li>
-                </div>
 
                 <li class="nav-item">
-                    <a id="mm-exp-btn" role="button" aria-expanded="false"
-                       aria-controls="mm-collapse" class="nav-link"
-                       href="/explore_mm">Mouse Models</a>
+                    <a id="mm-exp-btn" role="button" class="nav-link"
+                       data-bs-toggle="collapse" data-bs-target="#mm-collapse"
+                       href="#mm-collapse" aria-controls="mm-collapse"
+                       aria-expanded="{{ 'true' if open_mm else 'false' }}">Mouse Models</a>
+                    <ul id="mm-collapse" class="nav flex-column pb-3 collapse{{ ' show' if open_mm else '' }}"
+                        data-bs-parent="#expl-ul">
+                        <li class="nav-item sub-navitem small">
+                            <a class="nav-link" href="/explore_mm">Dataset overview</a>
+                        </li>
+                        <li id="view_mouse" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/view_mouse">View Data</a>
+                        </li>
+                        <li class="nav-item sub-navitem">
+                            <a class="nav-link" href="/get_tp53data#get_mouse">Downloads</a>
+                        </li>
+                    </ul>
                 </li>
-                <div id="mm-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
-                    <li id="view_mouse" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/view_mouse">View Data</a>
-                    </li>
-                    <li class="nav-item sub-navitem">
-                        <a class="nav-link" href="/get_tp53data#get_mouse">Downloads</a>
-                    </li>
-                </div>
 
                 <li class="nav-item">
-                    <a id="eim-exp-btn" role="button" aria-expanded="false"
-                       aria-controls="eim-collapse" class="nav-link"
-                       href="/explore_eim">Experimentally Induced Variants</a>
+                    <a id="eim-exp-btn" role="button" class="nav-link"
+                       data-bs-toggle="collapse" data-bs-target="#eim-collapse"
+                       href="#eim-collapse" aria-controls="eim-collapse"
+                       aria-expanded="{{ 'true' if open_eim else 'false' }}">Experimentally Induced Variants</a>
+                    <ul id="eim-collapse" class="nav flex-column pb-3 collapse{{ ' show' if open_eim else '' }}"
+                        data-bs-parent="#expl-ul">
+                        <li class="nav-item sub-navitem small">
+                            <a class="nav-link" href="/explore_eim">Dataset overview</a>
+                        </li>
+                        <li id="view_exp_ind_mut" class="nav-item sub-navitem">
+                            <a class="nav-link" href="/view_exp_ind_mut">View Data</a>
+                        </li>
+                        <li class="nav-item sub-navitem">
+                            <a class="nav-link" href="/get_tp53data#get_eim">Downloads</a>
+                        </li>
+                    </ul>
                 </li>
-                <div id="eim-collapse" class="pb-3 collapse" data-bs-parent="#expl-ul">
-                    <li id="view_exp_ind_mut" class="nav-item sub-navitem">
-                        <a class="nav-link" href="/view_exp_ind_mut">View Data</a>
-                    </li>
-                    <li class="nav-item sub-navitem">
-                        <a class="nav-link" href="/get_tp53data#get_eim">Downloads</a>
-                    </li>
-                </div>
 
             </ul>
             <ul id="dd-ul" class="nav mt-4">
@@ -136,13 +171,13 @@
     {% block subcontent %}
     {% endblock %}
 </main>
-<div class="spinner">
+<div class="spinner" aria-live="polite">
     <div class="spinner-group d-flex justify-content-center">
         {% for n in range(3) %}
         {% set color_factor = 20 * n %}
         <div class="spinner-grow mx-1" style="color: hsl(174, 40%, {{ color_factor }}%); width:40px; height:40px;"
              role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="visually-hidden">Loading...</span>
         </div>
         {% endfor %}
     </div>

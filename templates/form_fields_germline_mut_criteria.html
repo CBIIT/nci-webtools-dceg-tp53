@@ -51,11 +51,11 @@
             <div class="accordion-body bg-light">
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                        <legend id="{{ id_prefix }}_carriers_only_legend" class="text-end col-form-label col-sm-3 pt-0">
                             Confirmed or Obligate Carriers Only
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                     data-bs-html="true"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Confirmed or Obligate Carriers Only"
                                     title="Records of individuals who have been identified as <strong>confirmed</strong>
                                     OR <strong>obligatory</strong> <em>TP53</em> variant carriers">
                                 <i class="far fa-question-circle"></i>
@@ -66,7 +66,8 @@
                                 <input class="form-check-input" type="checkbox"
                                        id="{{ id_prefix }}_carriers_only" name="{{ id_prefix }}_carriers_only"
                                        value="checked">
-
+                                <label class="form-check-label visually-hidden" for="{{ id_prefix }}_carriers_only">Confirmed
+                                    or Obligate Carriers Only</label>
                             </div>
                             <input class="form-check-input " type="hidden"
                                    id="{{ id_prefix }}_confirmed_carriers" name="{{ id_prefix }}_carrier"
@@ -79,11 +80,11 @@
                 </fieldset>
                 <fieldset class="mb-3">
                     <div class="row">
-                        <legend class="text-end col-form-label col-sm-3 pt-0">
+                        <legend id="{{ id_prefix }}_affected_only_legend" class="text-end col-form-label col-sm-3 pt-0">
                             Cancer-Affected Individuals Only
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                     data-bs-html="true"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Cancer-Affected Individuals Only"
                                     title="Records of individuals who were affected by cancer at time of follow-up.">
                                 <i class="far fa-question-circle"></i>
                             </button>
@@ -93,6 +94,8 @@
                                 <input class="form-check-input" type="checkbox"
                                        id="{{ id_prefix }}_affected_only" name="{{ id_prefix }}_affected_only"
                                        value="False">
+                                <label class="form-check-label visually-hidden" for="{{ id_prefix }}_affected_only">Cancer-Affected
+                                    Individuals Only</label>
                             </div>
                         </div>
                     </div>
@@ -103,7 +106,7 @@
                             Age at Diagnosis
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
                                     data-bs-placement="right"
-                                    aria-label="help button"
+                                    aria-label="Help for Age at Diagnosis"
                                     title="Age of the patient at the time of diagnosis.">
                                 <i class="far fa-question-circle"></i>
                             </button>
@@ -141,7 +144,7 @@
                         <legend class="text-end col-form-label col-sm-3 pt-0">
                             Sex
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Sex"
                                     title="Sex of the patient (M for male, F for female).">
                                 <i class="far fa-question-circle"></i>
                             </button>
@@ -174,7 +177,7 @@
                         <legend class="text-end col-form-label col-sm-3 pt-0">
                             Family History
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Family History"
                                     title="Information on the presence or absence of cancers in the family of the patient.">
                                 <i class="far fa-question-circle"></i>
                             </button>
@@ -206,7 +209,7 @@
                         <legend class="text-end col-form-label col-sm-3 pt-0">
                             Mode of Inheritance
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Mode of Inheritance"
                                     title="Mode of variation inheritance: P=paternal, M=maternal, M&P=maternal
                                                                 and paternal, de novo= mutation that has not been
                                                                 inherited, 'de novo, mosaic'= mutation that has not been
@@ -242,7 +245,7 @@
                         <legend class="text-end col-form-label col-sm-3 pt-0">
                             Family Case
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Family Case"
                                     title="Family case in the pedigree, such as proband (index case), mother, father...">
                                 <i class="far fa-question-circle"></i>
                             </button>
@@ -274,7 +277,7 @@
                         <legend class="text-end col-form-label col-sm-3 pt-0">
                             Country/Population
                             <button class="btn btn-sm pe-0" type="button" data-bs-toggle="tooltip"
-                                    data-bs-placement="right" aria-label="help button"
+                                    data-bs-placement="right" aria-label="Help for Country/Population"
                                     title="Country/Region in which the patient was living at the time of surgery. When not otherwise
                                 specified in the original publication, the country corresponding to the address of the hospital
                                 is entered.">

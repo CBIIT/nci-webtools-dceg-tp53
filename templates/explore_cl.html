@@ -1,10 +1,8 @@
 {% extends "tp53data_submenu.html" %}
+{% set active_submenu = 'cl-exp-btn' %}
 {% block title %}Explore Datasets: Cell Lines{% endblock %}
 {% block head %}
 {{ super() }}
-<script type="text/javascript">
-    active_submenu = 'cl-exp-btn';
-</script>
 {% endblock %}
 
 {% block subcontent %}
@@ -27,7 +25,7 @@
         <div class="row short-ht-row py-0">
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-header" title="Search Cell-Line Variant Data" role="button">
+                    <div class="card-header" title="Search Cell-Line Variant Data">
                         <a class="card-header-text" href="/search_cell_lines">Search Cell-Line Data</a>
                     </div>
                     <div class="card-body">
@@ -39,7 +37,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-header" title="View Selected Statistics on Cell-Line Variants" role="button">
+                    <div class="card-header" title="View Selected Statistics on Cell-Line Variants">
                         <a class="card-header-text" href="/stats_cell_lines">Selected Statistics</a>
                     </div>
                     <div class="card-body">
