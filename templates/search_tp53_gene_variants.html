@@ -30,10 +30,8 @@
                     <div class="col-sm-8">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_cdna"
-                                   value="type_cdna"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_cdna_div"
-                                   aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_cdna_div"
+                                   value="type_cdna" checked
+                                   data-type-panel="#{{ id_prefix }}_cdna_div"
                                    aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_cdna">
                                 cDNA Description
@@ -50,9 +48,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_p"
                                    value="type_p"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_p_div"
-                                   aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_p_div"
+                                   data-type-panel="#{{ id_prefix }}_p_div"
                                    aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_p">
                                 Protein Description
@@ -68,9 +64,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_hg19"
                                    value="type_hg19"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg19_div"
-                                   aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_hg19_div"
+                                   data-type-panel="#{{ id_prefix }}_hg19_div"
                                    aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_hg19">
                                 Genomic Description (hg19)
@@ -87,9 +81,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type_input" id="type_hg38"
                                    value="type_hg38"
-                                   data-bs-toggle="collapse" data-bs-target="#{{ id_prefix }}_hg38_div"
-                                   aria-expanded="false"
-                                   aria-controls="{{ id_prefix }}_hg38_div"
+                                   data-type-panel="#{{ id_prefix }}_hg38_div"
                                    aria-labelledby="{{ id_prefix }}_search_by">
                             <label class="form-check-label" for="type_hg38">
                                 Genomic Description (hg38)
