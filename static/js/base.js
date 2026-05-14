@@ -41,6 +41,47 @@ $(document).ready(function () {
     set_active_menu(active_menu);
     // set_active_submenu(active_submenu);
 
+    // WCAG 2.4.1: programmatic focus needed because #main-content is not natively focusable
+    $('a.skip-to-main').on('click', function () {
+        window.setTimeout(function () {
+            var el = document.getElementById('main-content');
+            if (el) {
+                el.focus();
+            }
+        }, 0);
+    });
+
+    // WCAG 1.3.3 / GSA: announce new-tab for all target="_blank" links
+    (function enhanceNewTabLinks() {
+        var hint = ' (opens in new tab)';
+        var hintKeywords = ['opens in new', 'new tab'];
+        function alreadyHinted(text) {
+            return hintKeywords.some(function (kw) { return text.indexOf(kw) >= 0; });
+        }
+        $('a[target="_blank"]').each(function () {
+            var a = this;
+            if (a.getAttribute('data-skip-new-tab-a11y') === 'true') {
+                return;
+            }
+            var al = a.getAttribute('aria-label');
+            if (al !== null && al !== '') {
+                if (!alreadyHinted(al)) {
+                    a.setAttribute('aria-label', al + hint);
+                }
+                return;
+            }
+            var hasManual = false;
+            $(a).find('.visually-hidden').each(function () {
+                if (alreadyHinted(this.textContent || '')) {
+                    hasManual = true;
+                }
+            });
+            if (!hasManual) {
+                $(a).append('<span class="visually-hidden">' + hint + '</span>');
+            }
+        });
+    }());
+
     // set_data_bs_target(['help', 'resources', 'about'].indexOf(active_menu) >= 0);
 
     // $(".back-button").click(function () {
@@ -64,12 +105,17 @@ $(window).on('pagehide', function(){
 
 
 var toggle_collapse_jQSel = function (selections, triggerHide) {
-    $.each(selections, function (index, value) {
-        var div_ids = $(value).prop('id');
-        var divCollapse = document.getElementById(div_ids);
-        new bootstrap.Collapse(divCollapse,
-            triggerHide ? {hide: true, show: false} : {hide: false, show: true}
-        );
+    jQuery(selections).each(function () {
+        var el = this;
+        if (!el || el.nodeType !== 1 || !el.id) {
+            return;
+        }
+        var c = bootstrap.Collapse.getOrCreateInstance(el, { toggle: false });
+        if (triggerHide) {
+            c.hide();
+        } else {
+            c.show();
+        }
     });
 };
 

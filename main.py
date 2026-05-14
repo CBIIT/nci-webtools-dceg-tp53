@@ -15,6 +15,8 @@
 ###
 import logging
 import os
+import re
+from datetime import datetime
 from flask import (
     Flask,
     render_template,
@@ -43,7 +45,53 @@ from jinja2 import TemplateNotFound
 app = Flask(__name__)
 app.config["TESTING"] = settings.IS_TEST
 app.config["ENV"] = "development" if settings.IS_TEST else "production"
+# Let Jinja pick up template edits under gunicorn when IS_TEST (local dev).
+if settings.IS_TEST:
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
 logger = logging.getLogger("main_logger")
+
+
+def parse_version_and_date(version_string, build_date=None):
+    if not version_string:
+        today = datetime.utcnow().strftime("%Y-%m-%d")
+        return {"version": "dev", "date": today}
+
+    semver_match = re.search(r"(\d+\.\d+\.\d+)(_dev)?", version_string)
+    branch_date_match = re.match(r"^(.*?)[_-](\d{8})$", version_string)
+
+    if semver_match:
+        version = f"{semver_match.group(1)}{semver_match.group(2) or ''}"
+    elif branch_date_match:
+        version = branch_date_match.group(1)
+    else:
+        version = version_string
+
+    if build_date:
+        build_date_match = re.search(r"(\d{4})[-_]?(\d{2})[-_]?(\d{2})", build_date)
+        if build_date_match:
+            date = f"{build_date_match.group(1)}-{build_date_match.group(2)}-{build_date_match.group(3)}"
+        else:
+            date = build_date
+    else:
+        date_match = re.search(r"(\d{4})[-_]?(\d{2})[-_]?(\d{2})", version_string)
+        if date_match:
+            date = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}"
+        else:
+            date = datetime.utcnow().strftime("%Y-%m-%d")
+
+    return {"version": version, "date": date}
+
+
+@app.context_processor
+def inject_footer_metadata():
+    metadata = parse_version_and_date(
+        os.environ.get("APP_VERSION") or settings.DATA_VERSION,
+        os.environ.get("APP_BUILD_DATE"),
+    )
+    return {
+        "footer_version": metadata["version"],
+        "footer_last_updated": metadata["date"],
+    }
 
 Talisman(
     app,
@@ -59,6 +107,7 @@ Talisman(
             "*.fontawesome.com",
             "*.adobedtm.com",
             "*.cancer.gov",
+            "dap.digitalgov.gov",
             "'unsafe-inline'",
             "'unsafe-eval'",
             "data:",

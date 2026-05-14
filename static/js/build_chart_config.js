@@ -311,6 +311,7 @@ var build_3d_graph = function (chart_id, data, width, height) {
     $('#' + chart_id).data('jmol', data_by_threshold);
     $('#' + chart_id).data('jmol-info', jsmol_Info);
     $('#' + chart_id).html(Jmol.getAppletHtml(tp53JSmol));
+    $('#' + chart_id).find('img').attr('alt', '');
 };
 
 

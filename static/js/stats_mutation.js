@@ -122,6 +122,7 @@ $(document).ready(function () {
             Jmol.setDocument(false);
             Jmol.getApplet("tp53JSmolCopy", jsmol_Info);
             $('#expanded-struct3D').html(Jmol.getAppletHtml(tp53JSmolCopy));
+            $('#expanded-struct3D').find('img').attr('alt', '');
         }
     });
 

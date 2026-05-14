@@ -4,7 +4,7 @@
 {% block content %}
 <main id="landing">
     <div id="browser-alert" class="m-0 alert alert-dismissible collapse" role="alert">
-        <span class="darkpurple-text"><i class="fas fa-exclamation-circle"></i> <strong>This web site is optimized for
+        <span class="darkpurple-text"><i class="fas fa-exclamation-circle" aria-hidden="true"></i> <strong>This web site is optimized for
                 use
                 with the Google Chrome or Mozilla Firefox desktop web browsers.</strong></span> If you find an issue and
         you are
@@ -13,11 +13,11 @@
         see if the issue appears to be browser specific.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div class="page-banner-temp">
+    <div class="page-banner-temp" role="region" aria-label="In memoriam: Dr. Pierre Hainaut">
         <div class="landing-text-1 py-1 px-3 container">
             <p>We are deeply saddened to share the passing of Dr. Pierre Hainaut. Dr. Hainaut was fundamental to the development and maintenance of the TP53 Database.
-            His vision and leadership established the TP53 Database as a foundational resource for p53 research worldwide. 
-            He will be greatly missed.</p>
+            His vision and leadership established the TP53 Database as a foundational resource for p53 research worldwide.
+            He will be greatly missed. For additional details on his life and scientific legacy, please refer to <a href="https://www.nature.com/articles/s41418-025-01586-5" target="_blank" rel="noopener noreferrer" class="page-banner-temp__link">the obituary</a> published in <a href="https://www.nature.com/cdd/" target="_blank" rel="noopener noreferrer" class="page-banner-temp__link"><em>Cell Death &amp; Differentiation</em></a>.</p>
 
         </div>
     </div>
@@ -90,6 +90,7 @@
                                     </div>
                                     <div class="col-1 px-0">
                                         <button class="btn-view-details card-expand-btn" title="Open search options"
+                                            aria-label="Expand Functional / Structural Data search options"
                                             data-bs-toggle="collapse" href="#abtGV" role="button" aria-expanded="false"
                                             aria-controls="abtGV">
                                         </button>
@@ -140,6 +141,7 @@
                                     </div>
                                     <div class="col-1 px-0">
                                         <button class="btn-view-details card-expand-btn" title="Open search options"
+                                            aria-label="Expand Tumor Variants search options"
                                             data-bs-toggle="collapse" href="#abtSM" role="button" aria-expanded="false"
                                             aria-controls="abtSM">
                                         </button>
@@ -188,6 +190,7 @@
                                     </div>
                                     <div class="col-1 px-0">
                                         <button class="btn-view-details card-expand-btn" title="Open search options"
+                                            aria-label="Expand Germline Variants search options"
                                             data-bs-toggle="collapse" href="#abtGM" role="button" aria-expanded="false"
                                             aria-controls="abtGM">
                                         </button>
@@ -237,6 +240,7 @@
                                     </div>
                                     <div class="col-1 px-0">
                                         <button class="btn-view-details card-expand-btn" title="Open search options"
+                                            aria-label="Expand Cell Lines search options"
                                             data-bs-toggle="collapse" href="#abtCL" role="button" aria-expanded="false"
                                             aria-controls="abtCL">
                                         </button>
@@ -286,6 +290,7 @@
                                     </div>
                                     <div class="col-1 px-0">
                                         <button class="btn-view-details card-expand-btn" title="Open search options"
+                                            aria-label="Expand Mouse Models search options"
                                             data-bs-toggle="collapse" href="#abtMM" role="button" aria-expanded="false"
                                             aria-controls="abtMM">
                                         </button>
@@ -326,6 +331,7 @@
                                     </div>
                                     <div class="col-1 px-0">
                                         <button class="btn-view-details card-expand-btn" title="Open search options"
+                                            aria-label="Expand Experimentally Induced Variants search options"
                                             data-bs-toggle="collapse" href="#abtEIM" role="button" aria-expanded="false"
                                             aria-controls="abtEIM">
                                         </button>

@@ -140,7 +140,8 @@ var selectAllRows = function (t, bool) {
 
 var updateActionButtonGroups = function (selectedRowCounts) {
     $('.cart-count').html(selectedRowCounts);
-    $('.action-button').toggleClass('disabled', selectedRowCounts === 0);
+    $('.action-button').toggleClass('disabled', selectedRowCounts === 0)
+        .prop('disabled', selectedRowCounts === 0);
 };
 
 

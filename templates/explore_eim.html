@@ -1,10 +1,8 @@
 {% extends "tp53data_submenu.html" %}
+{% set active_submenu = 'eim-exp-btn' %}
 {% block title %}Explore Datasets: Experimentally Induced Variants{% endblock %}
 {% block head %}
 {{ super() }}
-<script type="text/javascript">
-    active_submenu = 'eim-exp-btn';
-</script>
 {% endblock %}
 
 {% block subcontent %}
@@ -25,7 +23,7 @@
         <div class="row py-0">
             <div class="col-lg-4">
                 <div class="card">
-                    <div class="card-header" title="View Experimentally Induced Variant Data" role="button">
+                    <div class="card-header" title="View Experimentally Induced Variant Data">
                         <a class="card-header-text" href="/view_exp_ind_mut">View Data</a>
                     </div>
                     <div class="card-body">

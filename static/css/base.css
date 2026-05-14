@@ -193,6 +193,11 @@ a:hover {
   cursor: pointer;
 }
 
+/* WCAG 1.4.1: body text links must be distinguishable without relying on color alone */
+a {
+  text-decoration: underline;
+}
+
 a.hover-arrow-link:hover::after {
   display: inline-block;
   width: 1.2rem;
@@ -208,7 +213,7 @@ a.hover-arrow-link:hover::after {
   font-size: 1rem;
   color: white;
   margin: 5px 0;
-  background-color: rgba(84, 181, 171, 0.8);
+  background-color: #2a7c6f;
 }
 
 .collapsible-sidebar {
@@ -269,7 +274,7 @@ a.hover-arrow-link:hover::after {
   ul.nav
   > li.nav-item
   a[aria-expanded="true"] {
-  background-color: #7ebdb7;
+  background-color: #2a7c6f;
 }
 .collapsible-sidebar .nav-link {
   padding-left: 1.5rem;
@@ -308,6 +313,12 @@ a.hover-arrow-link:hover::after {
   background-color: #6a9f9a;
 }
 
+/* 508: nested nav / collapse must paint the same bg as the sidebar (avoid white-on-#f8f9fa vs body bg-light) */
+.collapsible-sidebar ul.nav,
+.collapsible-sidebar [id$="-collapse"] {
+  background-color: var(--bs-secondary, #6c757d);
+}
+
 .page-banner {
   color: white;
   background-color: #404db5;
@@ -315,6 +326,48 @@ a.hover-arrow-link:hover::after {
 .page-banner-temp {
   color: white;
   background: #373d85;
+}
+
+/* 508: link contrast on dark banner (exceeds WCAG AA vs default #4f5edf on #373d85) */
+.page-banner-temp .page-banner-temp__link {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.page-banner-temp .page-banner-temp__link:hover,
+.page-banner-temp .page-banner-temp__link:focus {
+  color: #f0f4ff;
+  text-decoration: underline;
+}
+.page-banner-temp .page-banner-temp__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* 508 / WCAG 2.4.1 Bypass Blocks */
+.skip-to-main {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  z-index: 10001;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-to-main:focus,
+.skip-to-main:focus-visible {
+  position: fixed;
+  left: 0.75rem;
+  top: 0.75rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  background-color: #2f2c55;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  clip: auto;
 }
 
 .three_d_viwer {
@@ -373,7 +426,7 @@ h1 a {
 }
 
 .card-header {
-  background-color: rgba(84, 181, 171, 0.9);
+  background-color: #2a7c6f;
   padding: 10px 32px;
   font-weight: bold;
 }
@@ -438,7 +491,8 @@ h1 a {
 
 .collapsible-sidebar:hover .sidebar-icon,
 .collapsible-sidebar.hover .sidebar-icon,
-.collapsible-sidebar .nav,
+.collapsible-sidebar #expl-ul,
+.collapsible-sidebar #dd-ul,
 .collapsible-sidebar hr {
   display: none;
 }
@@ -447,9 +501,12 @@ h1 a {
 /*display: none;*/
 /*}*/
 
-.collapsible-sidebar:hover .nav,
+/* Only top-level lists — not .nav on nested #*-collapse (Bootstrap needs to control .collapse display) */
+.collapsible-sidebar:hover #expl-ul,
+.collapsible-sidebar:hover #dd-ul,
 .collapsible-sidebar:hover hr,
-.collapsible-sidebar.hover .nav,
+.collapsible-sidebar.hover #expl-ul,
+.collapsible-sidebar.hover #dd-ul,
 .collapsible-sidebar.hover hr {
   display: block;
 }
@@ -668,10 +725,12 @@ footer img {
   .collapsible-sidebar.hover:hover {
     left: 0;
   }
-  .collapsible-sidebar.hover .nav {
+  .collapsible-sidebar.hover #expl-ul,
+  .collapsible-sidebar.hover #dd-ul {
     display: none;
   }
-  .collapsible-sidebar.hover:hover .nav {
+  .collapsible-sidebar.hover:hover #expl-ul,
+  .collapsible-sidebar.hover:hover #dd-ul {
     display: block;
   }
 
