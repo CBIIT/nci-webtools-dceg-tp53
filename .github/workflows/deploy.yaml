@@ -21,6 +21,16 @@ jobs:
     steps:
       - uses: "actions/checkout@v4"
 
+      - name: "Set app version"
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "APP_VERSION=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
+          else
+            TIMESTAMP=$(date -u +"%Y%m%d")
+            REF_SLUG=$(echo "${GITHUB_REF_NAME}" | tr '/ ' '--' | tr -cd '[:alnum:]_.-')
+            echo "APP_VERSION=${REF_SLUG}_${TIMESTAMP}" >> "$GITHUB_ENV"
+          fi
+
       # Set up Google Cloud SDK
       - name: "Set up Google Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v2"
