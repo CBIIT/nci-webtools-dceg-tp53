@@ -269,7 +269,7 @@ var displayDistributions = function (action, selectedRowSet) {
     }
 
     $("<input>", { value: JSON.stringify(criteria), name: 'criteria', type: 'hidden' }).appendTo(form);
-    input = $("<input type='hidden' name='action' value='" + action + "'/>");
+    input = $("<input>", { type: 'hidden', name: 'action', value: action });
     input.appendTo(form);
 
     form.appendTo($("body"));

@@ -69,7 +69,10 @@ def load_csv_file(base_url, list_file):
     column_list = []
     data_list = []
     try:
-        file_path = base_url + "/data/" + list_file
+        data_dir = os.path.realpath(os.path.join(base_url, "data"))
+        file_path = os.path.realpath(os.path.join(data_dir, list_file))
+        if not file_path.startswith(data_dir + os.sep):
+            return column_list, data_list
         with open(file_path, "r", encoding="utf-8") as file:
             reader = csv.reader(file, delimiter=",")
             column_list = next(reader)

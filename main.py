@@ -1384,4 +1384,5 @@ def warmup():
 settings.setup_app(app)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    flask_debug = os.environ.get("FLASK_DEBUG", "False").lower() in ("true", "1")
+    app.run(host="127.0.0.1", port=8080, debug=flask_debug)
