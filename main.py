@@ -45,6 +45,9 @@ from jinja2 import TemplateNotFound
 app = Flask(__name__)
 app.config["TESTING"] = settings.IS_TEST
 app.config["ENV"] = "development" if settings.IS_TEST else "production"
+# TESTING makes Flask re-raise unhandled errors, which gunicorn then answers with a
+# bare 500 that bypasses the error page and the security headers. Always handle them.
+app.config["PROPAGATE_EXCEPTIONS"] = False
 # Let Jinja pick up template edits under gunicorn when IS_TEST (local dev).
 if settings.IS_TEST:
     app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -1150,6 +1153,8 @@ def view_full_data(dataset):
         criteria = [
             {"column_name": "polymorphism", "vals": ["validated"], "wrap_with": '"'}
         ]
+    else:
+        abort(404)
     try:
         sql_stm = bq_builder.build_simple_query(
             criteria=criteria, table=table, column_filters=column_filters
@@ -1373,6 +1378,18 @@ def favicon():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    logger.error("[ERROR] Unhandled exception", exc_info=getattr(e, "original_exception", e))
+    return (
+        render_template(
+            "error.html",
+            error_message="There was an error with the last request. Please try again.",
+        ),
+        500,
+    )
 
 
 @app.route("/_ah/warmup")
