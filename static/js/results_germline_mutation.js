@@ -251,10 +251,10 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
         $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
     }
 
-    input = $("<input type='hidden' name='action' value='" + action + "'/>");
+    input = $("<input>", { type: 'hidden', name: 'action', value: action });
     input.appendTo(form);
 
-    input = $("<input type='hidden' name='query_dataset' value='Germline'/>");
+    input = $("<input>", { type: 'hidden', name: 'query_dataset', value: 'Germline' });
     input.appendTo(form);
 
     form.appendTo($("body"));

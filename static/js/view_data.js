@@ -10,7 +10,11 @@ $(document).ready(function () {
         }
         else {
             var title = $(this).text();
-            $(this).html('<input aria-label="' + title + '" class="form-control-sm form-control" type="text" placeholder="' + title + '" />');
+            $(this).empty().append(
+                $('<input class="form-control-sm form-control" type="text" />')
+                    .attr('aria-label', title)
+                    .attr('placeholder', title)
+            );
             $('input', this).on('keyup change', function () {
                 if (table.column(i).search() !== this.value) {
                     table

@@ -273,7 +273,7 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
     if (selectedRowSet.size){
         var mutIds = Array.from(selectedRowSet);
         for (var i = 0; i < mutIds.length; i++) {
-            input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
+            input = $("<input>", { type: 'hidden', name: 'mut_id_list', value: mutIds[i] });
             input.appendTo(form);
         }
     }
@@ -281,9 +281,9 @@ var displayGeneVariationDistributions = function (action, selectedRowSet) {
         $("<input>", { value: JSON.stringify($('#criteria_div').data('criteria')), name: 'criteria', type: 'hidden' }).appendTo(form);
     }
 
-    input = $("<input type='hidden' name='action' value='" + action + "'/>");
+    input = $("<input>", { type: 'hidden', name: 'action', value: action });
     input.appendTo(form);
-    input = $("<input type='hidden' name='query_dataset' value='Mutation'/>");
+    input = $("<input>", { type: 'hidden', name: 'query_dataset', value: 'Mutation' });
     input.appendTo(form);
     form.appendTo($("body"));
     form.submit();
@@ -294,7 +294,7 @@ var displayCellLines = function (selectedRowSet) {
     var mutIds = Array.from(selectedRowSet);
     var form = $("<form method='POST' action='/results_cell_line_mutation'></form>");
     for (var i = 0; i < mutIds.length; i++) {
-        var input = $("<input type='hidden' name='mut_id_list' value='" + mutIds[i] + "'/>");
+        var input = $("<input>", { type: 'hidden', name: 'mut_id_list', value: mutIds[i] });
         input.appendTo(form);
     }
     form.appendTo($("body"));

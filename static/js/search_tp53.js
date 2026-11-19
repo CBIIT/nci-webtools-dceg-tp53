@@ -126,7 +126,17 @@ $(document).ready(function () {
 
         var warning_div = select_box.parents('.paste-support').find('.warning_invalid_var');
         if (invalid_items.length > 0) {
-            warning_div.html('<i class="fas fa-exclamation-triangle"></i> Found ' + invalid_items.length + ' invalid variant(s):<br><span class="badge rounded-pill bg-dark-purple">' + invalid_items.join('</span> <span class="badge rounded-pill bg-dark-purple">') + '</span>')
+            warning_div.empty().append(
+                $('<i class="fas fa-exclamation-triangle"></i>'),
+                document.createTextNode(' Found ' + invalid_items.length + ' invalid variant(s):'),
+                $('<br/>')
+            );
+            invalid_items.forEach(function (item, indx) {
+                if (indx > 0) {
+                    warning_div.append(document.createTextNode(' '));
+                }
+                warning_div.append($('<span class="badge rounded-pill bg-dark-purple"></span>').text(item));
+            });
         }
         else {
             warning_div.html('');
@@ -180,9 +190,9 @@ var enableTooltip = function () {
 //type can be cdna, p, hg19 or hg38
 var displayGeneVariations = function (type, descrption) {
     var form = $("<form method='POST' action='/results_gene_mut/gv' target='_blank' rel='noopener noreferrer'></form>");
-    var input = $("<input type='hidden' name='type_input' value='type_"+type+"'/>");
+    var input = $("<input>", { type: 'hidden', name: 'type_input', value: 'type_' + type });
     input.appendTo(form);
-    input = $("<input type='hidden' name='gv_"+type+"_list' value='"+descrption+"'/>");
+    input = $("<input>", { type: 'hidden', name: 'gv_' + type + '_list', value: descrption });
     input.appendTo(form);
     form.appendTo($("body"));
     form.submit();

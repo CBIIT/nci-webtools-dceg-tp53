@@ -22,7 +22,11 @@ $(document).ready(function () {
             }
             else {
                 var title = $(this).text();
-                $(this).html('<input type="text" aria-label="'+title+'" class="form-control-sm form-control" placeholder="' + title + '" />');
+                $(this).empty().append(
+                    $('<input type="text" class="form-control-sm form-control" />')
+                        .attr('aria-label', title)
+                        .attr('placeholder', title)
+                );
             }
             $('input', this).on('keyup change', function () {
                 var table = tables.table($(this).parents('table'));
@@ -58,22 +62,23 @@ $(document).ready(function () {
     );
 
     $('.add-ref').on('click', function () {
-        var option_list = '';
+        var option_list = [];
         var input_selector = $(this).data('ref-dest');
         var table = tables.table($(this).parents('.modal').find('table'));
         var selected_rows = table.$('tr.selected');
         selected_rows.each(function () {
             var cols = $(this).find('td');
             var ref_id = $(cols[0]).find('input').val();
-            option_list += '<option selected value="' + ref_id + '">'
-                + $(cols[AUTHOR_COL_ORD]).text()
-                + ' (' + $(cols[YEAR_COL_ORD]).text()
-                + '). '
-                + $(cols[TITLE_ID_COL_ORD]).text()
-                + ' <em>'
-                + $(cols[JOURNAL_COL_ORD]).text()
-                + '</em>'
-                + '</option>';
+            option_list.push(
+                $('<option selected></option>')
+                    .attr('value', ref_id)
+                    .text($(cols[AUTHOR_COL_ORD]).text()
+                        + ' (' + $(cols[YEAR_COL_ORD]).text()
+                        + '). '
+                        + $(cols[TITLE_ID_COL_ORD]).text()
+                        + ' ')
+                    .append($('<em></em>').text($(cols[JOURNAL_COL_ORD]).text()))
+            );
         });
         $(input_selector).find('option').remove();
         $(input_selector).append(option_list);
